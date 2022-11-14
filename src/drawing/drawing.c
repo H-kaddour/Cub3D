@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:29:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/14 17:59:00 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/14 21:37:33 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,16 @@ static void	draw_player(t_data *data)
 	int	x;
 	int	y;
 
-	y = data->draw_utils->y + 20;
+	//y = data->draw_utils->y + 20;
+	y = data->draw_utils->ply_y_pos + 20;
+
 	//x = data->draw_utils->x + 20;
 	//mlx_pixel_put(data->mlx->init, data->mlx->win, x, y, 0x497174);
+	//data->draw_utils += data->d;
 	while (y < data->draw_utils->y + 30)
 	{
-		x = data->draw_utils->x + 20;
+		//x = data->draw_utils->x + 20;
+		x = data->draw_utils->ply_x_pos + 20;
 		while (x < data->draw_utils->x + 30)
 		{
 			mlx_pixel_put(data->mlx->init, data->mlx->win, x, y, 0x497174);
@@ -89,6 +93,7 @@ static void	draw_border_of_map(t_data *data)
 	int	j;
 
 	i = 0;
+	data->draw_utils->y = 0;
 	while (data->map->map[i])
 	{
 		j = 0;
@@ -102,7 +107,11 @@ static void	draw_border_of_map(t_data *data)
 				else
 					draw_line(data, 0);
 				if (data->map->map[i][j] == data->map->player)
+				{
+					data->draw_utils->ply_x_pos += data->draw_utils->x;
+					data->draw_utils->ply_y_pos += data->draw_utils->y;
 					draw_player(data);
+				}
 				//return ;
 			}
 			data->draw_utils->x += 50;

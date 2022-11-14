@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/14 13:47:04 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/14 19:08:18 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <math.h>
 # include <mlx.h>
 # define ELEM "NO SO EA WE F C"
-# define WIN_W 1080
-# define WIN_H 720
+# define WIN_W 1720
+# define WIN_H 1000
 # include "../libft/libft.h"
 # include "../gnl/gnl.h"
 # include "draw.h"
