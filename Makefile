@@ -6,13 +6,14 @@
 #    By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/23 21:52:28 by hkaddour          #+#    #+#              #
-#    Updated: 2022/11/14 10:06:09 by hkaddour         ###   ########.fr        #
+#    Updated: 2022/11/16 18:08:32 by hkaddour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 CC = cc
-CFLAG = -Wall -Wextra -Werror -g
+#CFLAG = -Wall -Wextra -Werror -g
+CFLAG = -g
 MLX = -lmlx -framework OpenGL -framework AppKit
 HEADER = include/cub3d.h
 LIB = libft/libft.a
@@ -24,7 +25,7 @@ GNL = $(addprefix gnl/, gnl.c)
 SRC = $(addprefix src/, main.c utils.c parsing/read_file.c parsing/parse_file.c \
 			error/error_handling.c free/g_collector.c free/g_collector_utils.c \
 			parsing/color_converter.c parsing/texture_check.c parsing/allocate_map.c \
-			parsing/parse_map.c drawing/window_utils.c drawing/drawing.c)
+			parsing/parse_map.c drawing/window_utils.c drawing/drawing.c drawing/images.c)
 
 OBJS = $(SRC:.c=.o)
 GNL_OBJ = $(GNL:.c=.o)

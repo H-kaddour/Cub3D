@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/14 19:08:18 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:02:44 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define ELEM "NO SO EA WE F C"
 # define WIN_W 1720
 # define WIN_H 1000
+# define SQR_SIZE 50
 # include "../libft/libft.h"
 # include "../gnl/gnl.h"
 # include "draw.h"
@@ -54,13 +55,18 @@ typedef	struct s_map
 	char	**map;
 } t_map;
 
+typedef struct image_utils t_img;
+
+typedef struct s_coordinate t_coord;
+
+typedef struct key_move	t_key_move;
+
 typedef struct s_mlx
 {
 	void	*init;
 	void	*win;
+	t_img	*utils;
 } t_mlx;
-
-typedef struct s_coordinate t_coord;
 
 typedef struct s_data
 {
@@ -71,8 +77,8 @@ typedef struct s_data
 	t_color	*color;
 	t_map		*map;
 	t_mlx		*mlx;
-	//struct s_coordinate	*draw_utils;
 	t_coord	*draw_utils;
+	t_key_move	*key_mv;
 	t_free	*g_collect;
 } t_data;
 
@@ -103,8 +109,11 @@ int		color_converter(t_data *data, char **rgb);
 void	parse_map(t_data *data, char **map);
 void	check_map_error(t_data *data);
 
-/******** Function of parsing **********/
+/******** Function of drawing **********/
 void	window_init(t_data *data);
 void	einstein_drawing(t_data *data);
+void	catch_player_pos(t_data *data);
+void	make_and_init_image(t_data *data);
+void	mlx_put_pixel_to_img(t_data *data, int x, int y, int clr);
 
 #endif

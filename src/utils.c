@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/14 21:43:47 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:16:18 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void	init_data(t_data *data, char *file)
 	data->map = allocation(data, 1, sizeof(t_map));
 	data->mlx = allocation(data, 1, sizeof(t_mlx));
 	data->draw_utils = allocation(data, 1, sizeof(t_coord));
-
+	data->key_mv = allocation(data, 1, sizeof(t_key_move));
+	data->mlx->utils = allocation(data, 1, sizeof(t_img));
 }
