@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:29:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/16 21:19:15 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/19 21:09:47 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ void	einstein_drawing(t_data *data)
 	draw_border_of_map(data);
 	draw_player(data);
 	mlx_put_image_to_window(data->mlx->init, data->mlx->win, \
-			data->mlx->utils->img, 50, 50);
+			data->mlx->utils->img, 0, 0);
 	//mlx_destroy_image(data->mlx->init, data->mlx->utils->img);
 
 
