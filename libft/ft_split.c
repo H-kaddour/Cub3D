@@ -6,7 +6,7 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 16:29:46 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/10/25 16:03:06 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/30 13:31:17 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -52,31 +52,29 @@ static void	ft_alloc_all(char *str, char c, int w, char **ptr)
 		if (*str != c && *str)
 		{
 			ptr[w++] = ft_alloc_word_by_word(str, c);
-			if (!ptr)
-			{
-				while (w >= 0)
-					free(ptr[w--]);
-				free(ptr);
-			}
 			while (*str != c && *str)
 				str++;
 			continue ;
 		}
 		str++;
-	} ptr[w] = 0;
+	}
+	ptr[w] = 0;
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(t_data *data, char const *s, char c)
 {
 	int		w;
 	char	**ptr;
 	char	*str;
 
 	if (!s)
-		return (NULL);
+		return (0);
 	w = 0;
 	str = (char *) s;
 	ptr = ft_calloc((ft_strcount(str, c) + 1), sizeof(char *));
 	ft_alloc_all(str, c, w, ptr);
+	w = 0;
+	while (ptr[w])
+		garbage_collector(data, ptr[w++]);
 	return (ptr);
 }

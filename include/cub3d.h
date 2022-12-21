@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/16 18:02:44 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/12/07 17:48:52 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,21 @@
 # include <strings.h>
 # include <unistd.h>
 # include <math.h>
-# include <mlx.h>
+//# include <mlx.h>
+# include "../mlx_linux/mlx.h"
 # define ELEM "NO SO EA WE F C"
 # define WIN_W 1720
-# define WIN_H 1000
+# define WIN_H 960
 # define SQR_SIZE 50
 # include "../libft/libft.h"
 # include "../gnl/gnl.h"
 # include "draw.h"
+
+typedef struct image_utils t_img;
+
+typedef struct s_coordinate t_coord;
+
+typedef struct key_move	t_key_move;
 
 typedef struct player_stat
 {
@@ -55,12 +62,6 @@ typedef	struct s_map
 	char	**map;
 } t_map;
 
-typedef struct image_utils t_img;
-
-typedef struct s_coordinate t_coord;
-
-typedef struct key_move	t_key_move;
-
 typedef struct s_mlx
 {
 	void	*init;
@@ -73,7 +74,7 @@ typedef struct s_data
 	char		*n_file;
 	int			fd_map;
 	char		**r_file;
-	p_stat	*p_stat;
+	p_stat	*ply_stat;
 	t_color	*color;
 	t_map		*map;
 	t_mlx		*mlx;
@@ -87,19 +88,14 @@ typedef struct s_data
 void	init_data(t_data *data, char *file);
 void	*allocation(t_data *data, int count, int size);
 char	*add_dup(t_data *data, char *s);
-char	*add_join(t_data *data, char *s, char *s1);
-char	*get_line_file(t_data *data, int fd);
-
 
 /******** Function of error **********/
 void	error_alloc(void);
 void	error_file(char *msg);
 
-
 /******** Function of free **********/
 void	garbage_collector(t_data *data, void *addr);
-void	add_split_garabage(t_data *data, char	**elem);
-
+void	free_all(t_data *data);
 
 /******** Function of parsing **********/
 void	read_file(t_data *data);
@@ -115,5 +111,6 @@ void	einstein_drawing(t_data *data);
 void	catch_player_pos(t_data *data);
 void	make_and_init_image(t_data *data);
 void	mlx_put_pixel_to_img(t_data *data, int x, int y, int clr);
+void	draw_rays(t_data *data);
 
 #endif

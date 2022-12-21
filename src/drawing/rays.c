@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 16:17:52 by hkaddour          #+#    #+#             */
-/*   Updated: 2021/11/03 13:27:57 by hkaddour         ###   ########.fr       */
+/*   Created: 2022/12/07 17:32:12 by hkaddour          #+#    #+#             */
+/*   Updated: 2022/12/07 18:16:23 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-int	ft_tolower(int arg)
+#include "../../include/cub3d.h"
+
+void	draw_rays(t_data *data)
 {
-	if (arg >= 'A' && arg <= 'Z')
-		arg += 32;
-	return (arg);
+	int	i;
+
+	i = 0;
+	while (i < SQR_SIZE - 25)
+	{
+		mlx_put_pixel_to_img(data, data->draw_utils->ply_x_pos + 25, \
+				data->draw_utils->ply_y_pos + 25 - i, 0xff0000);
+		i++;
+	}
 }

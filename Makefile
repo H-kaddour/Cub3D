@@ -6,15 +6,16 @@
 #    By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/23 21:52:28 by hkaddour          #+#    #+#              #
-#    Updated: 2022/11/16 18:08:32 by hkaddour         ###   ########.fr        #
+#    Updated: 2022/12/07 18:11:17 by hkaddour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 CC = cc
 #CFLAG = -Wall -Wextra -Werror -g
-CFLAG = -g
-MLX = -lmlx -framework OpenGL -framework AppKit
+CFLAG = -I/usr/include -Imlx_linux -O3 -g
+#MLX = -lmlx -framework OpenGL -framework AppKit
+MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 HEADER = include/cub3d.h
 LIB = libft/libft.a
 GNL = $(addprefix gnl/, gnl.c)
@@ -25,7 +26,8 @@ GNL = $(addprefix gnl/, gnl.c)
 SRC = $(addprefix src/, main.c utils.c parsing/read_file.c parsing/parse_file.c \
 			error/error_handling.c free/g_collector.c free/g_collector_utils.c \
 			parsing/color_converter.c parsing/texture_check.c parsing/allocate_map.c \
-			parsing/parse_map.c drawing/window_utils.c drawing/drawing.c drawing/images.c)
+			parsing/parse_map.c drawing/window_utils.c drawing/drawing.c drawing/images.c \
+			drawing/rays.c)
 
 OBJS = $(SRC:.c=.o)
 GNL_OBJ = $(GNL:.c=.o)
@@ -42,11 +44,13 @@ all: $(NAME)
 $(NAME): $(LIB) $(GNL_OBJ) $(OBJS)
 	@echo ""
 	@echo "$(BYellow)Merge $(BPurple)$(LIB) $(OBJS) $(GNL_OBJ) $(BYellow)output it in $(BPink)$(NAME)"
-	@$(CC) $(LIB) $(OBJS) $(GNL_OBJ) $(MLX) -o $(NAME)
+	@$(CC) libft/*.o $(OBJS) $(GNL_OBJ) $(MLX) -o $(NAME)
+#@$(CC) $(LIB) $(OBJS) $(GNL_OBJ) $(MLX) -o $(NAME)
 
 %.o: %.c $(HEADER)
 	@/bin/echo -n "."
-	@$(CC) $(CFLAG) -c $< -o $@ -I $(HEADER)
+	@$(CC) $(CFLAG) -c $< -o $@
+#@$(CC) $(CFLAG) -c $< -o $@ -I $(HEADER)
 
 $(LIB):
 	@make -C ./libft

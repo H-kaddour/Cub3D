@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 22:15:03 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/10/24 15:03:45 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:59:29 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 # define GNL_H
 # include <stdio.h>
 # include <stdlib.h>
-# include <strings.h>
+# include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
 
+typedef	struct s_data t_data;
+
 typedef struct grab_line
 {
-	char		*ptr;
-	char		*tmp;
 	char		*buff;
+	char		*tmp;
 	char		*line;
+	t_data	*data;
 }	t_gnl;
 
-char    *grab_line(int fd);
+char	*grab_line(t_data *data, int fd);
 
 #endif

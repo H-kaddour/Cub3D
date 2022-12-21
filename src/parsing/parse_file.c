@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:52:19 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/13 21:45:56 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/12/05 23:04:28 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static int	add_color_elem(t_data *data, char *line)
 	char	**sp;
 
 	i = 0;
-	sp = ft_split(line, ',');
-	add_split_garabage(data, sp);
+	sp = ft_split(data, line, ',');
+	//add_split_garabage(data, sp);
 	while (sp[i])
 	{
 		j = 0;
@@ -61,8 +61,8 @@ static void	parse_the_line(t_data *data, char *line)
 	char	**elem;
 
 	i = 0;
-	elem = ft_split(ELEM, ' ');
-	add_split_garabage(data, elem);
+	elem = ft_split(data, ELEM, ' ');
+	//add_split_garabage(data, elem);
 	while (elem[i])
 	{
 		if (!ft_strncmp(elem[i], line, ft_strlen(elem[i])))
@@ -97,27 +97,27 @@ static void	parse_the_line(t_data *data, char *line)
 		else
 			if (!ft_strncmp(line, "NO", 2))
 			{
-				if (data->p_stat->north)
+				if (data->ply_stat->north)
 					error_file("Error\nNO already exist");
-				data->p_stat->north = add_texture_elem(data, &line[j]);
+				data->ply_stat->north = add_texture_elem(data, &line[j]);
 			}
 			if (!ft_strncmp(line, "SO", 2))
 			{
-				if (data->p_stat->south)
+				if (data->ply_stat->south)
 					error_file("Error\nSO already exist");
-				data->p_stat->south = add_texture_elem(data, &line[j]);
+				data->ply_stat->south = add_texture_elem(data, &line[j]);
 			}
 			if (!ft_strncmp(line, "EA", 2))
 			{
-				if (data->p_stat->east)
+				if (data->ply_stat->east)
 					error_file("Error\nEA already exist");
-				data->p_stat->east = add_texture_elem(data, &line[j]);
+				data->ply_stat->east = add_texture_elem(data, &line[j]);
 			}
 			if (!ft_strncmp(line, "WE", 2))
 			{
-				if (data->p_stat->west)
+				if (data->ply_stat->west)
 					error_file("Error\nWE already exist");
-				data->p_stat->west = add_texture_elem(data, &line[j]);
+				data->ply_stat->west = add_texture_elem(data, &line[j]);
 			}
 	}
 }

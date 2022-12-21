@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:20:56 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/13 15:31:56 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:03:48 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	fill_read_file(t_data *data, int len)
 		error_file("Error in file");
 	while (i < len)
 	{
-		data->r_file[i] = get_line_file(data, data->fd_map);
+		data->r_file[i] = grab_line(data, data->fd_map);
 		i++;
 	}
 	close(data->fd_map);
@@ -48,13 +48,13 @@ void	read_file(t_data *data)
 	char	*line;
 
 	open_file(data);
-	line = get_line_file(data, data->fd_map);
+	line = grab_line(data, data->fd_map);
 	if (!line)
 		error_file("Empty file");
 	len = 1;
 	while (line)
 	{
-		line = get_line_file(data, data->fd_map);
+		line = grab_line(data, data->fd_map);
 		len++;
 	}
 	close(data->fd_map);
