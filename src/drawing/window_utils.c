@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:47:49 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/12/07 17:16:02 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:44:20 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,14 @@ int	close_win(t_data *data)
 
 int	keys(int key, t_data *data)
 {
-	//mac
-	//w == 13
-	//s == 1
-	//d == 2
-	//a == 0
-	//escape == 53
-
-	//linux
-	//w == 119
-	//s == 115
-	//d == 100
-	//a == 97
-	//escape == 65307
-
-	//printf("%d\n", key);
-
-	//mlx_clear_window(data->mlx->init, data->mlx->win);
-	if (key == 65307)
+	if (key == ESC)
 		close_win(data);
 	//if (key == 0)
 	//{
 	//	data->draw_utils->ply_x_pos -= 10;
 	//	//data->key_mv->ply_x_move -= 10;
 	//}
-	if (key == 100)
+	if (key == RIGHT)
 	{
 		if (data->map->map[((data->draw_utils->ply_y_pos) + 20) / 50]\
 				[((data->draw_utils->ply_x_pos + 10) + 20) / 50] != '1')
@@ -58,7 +41,7 @@ int	keys(int key, t_data *data)
 		//data->draw_utils->ply_x_pos += 10;
 		//data->key_mv->ply_x_move += 10;
 	}
-	if (key == 97)
+	if (key == LEFT)
 	{
 
 		if (data->map->map[((data->draw_utils->ply_y_pos) + 20) / 50]\
@@ -71,7 +54,7 @@ int	keys(int key, t_data *data)
 		}
 		//data->key_mv->ply_y_move -= 10;
 	}
-	if (key == 119)
+	if (key == UP)
 	{
 
 		if (data->map->map[((data->draw_utils->ply_y_pos - 10) + 20) / 50]\
@@ -84,7 +67,7 @@ int	keys(int key, t_data *data)
 		}
 		//data->key_mv->ply_y_move -= 10;
 	}
-	if (key == 115)
+	if (key == DOWN)
 	{
 		if (data->map->map[((data->draw_utils->ply_y_pos + 10) + 20) / 50]\
 				[((data->draw_utils->ply_x_pos) + 20) / 50] != '1')

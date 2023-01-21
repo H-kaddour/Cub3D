@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/12/07 17:48:52 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:40:26 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,18 @@
 # include <strings.h>
 # include <unistd.h>
 # include <math.h>
-//# include <mlx.h>
-# include "../mlx_linux/mlx.h"
+# include <mlx.h>
 # define ELEM "NO SO EA WE F C"
 # define WIN_W 1720
 # define WIN_H 960
 # define SQR_SIZE 50
+//# define ROT_RIGHT 0
+//# define ROT_LEFT 0
+# define RIGHT 2
+# define LEFT 0
+# define UP 13
+# define DOWN 1
+# define ESC 53
 # include "../libft/libft.h"
 # include "../gnl/gnl.h"
 # include "draw.h"

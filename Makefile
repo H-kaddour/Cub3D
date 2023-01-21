@@ -6,18 +6,16 @@
 #    By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/23 21:52:28 by hkaddour          #+#    #+#              #
-#    Updated: 2022/12/07 18:11:17 by hkaddour         ###   ########.fr        #
+#    Updated: 2023/01/15 17:34:34 by hkaddour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 CC = cc
-#CFLAG = -Wall -Wextra -Werror -g
-CFLAG = -I/usr/include -Imlx_linux -O3 -g
-#MLX = -lmlx -framework OpenGL -framework AppKit
-MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-HEADER = include/cub3d.h
+CFLAG = -Wall -Wextra -Werror -g
+MLX = -lmlx -framework OpenGL -framework AppKit
 LIB = libft/libft.a
+HEADER = include/cub3d.h
 GNL = $(addprefix gnl/, gnl.c)
 #PARSE = $(addprefix parsing/, parsing.c parsing_helper.c parsing_utils.c read_file.c)
 #ERROR = $(addprefix error/, error_handling.c)
@@ -44,13 +42,11 @@ all: $(NAME)
 $(NAME): $(LIB) $(GNL_OBJ) $(OBJS)
 	@echo ""
 	@echo "$(BYellow)Merge $(BPurple)$(LIB) $(OBJS) $(GNL_OBJ) $(BYellow)output it in $(BPink)$(NAME)"
-	@$(CC) libft/*.o $(OBJS) $(GNL_OBJ) $(MLX) -o $(NAME)
-#@$(CC) $(LIB) $(OBJS) $(GNL_OBJ) $(MLX) -o $(NAME)
+	@$(CC) $(LIB) $(OBJS) $(GNL_OBJ) $(MLX) -o $(NAME)
 
-%.o: %.c $(HEADER)
+%.o: %.c $(HEADER) 
 	@/bin/echo -n "."
-	@$(CC) $(CFLAG) -c $< -o $@
-#@$(CC) $(CFLAG) -c $< -o $@ -I $(HEADER)
+	@$(CC) $(CFLAG) -c $< -o $@ -I $(HEADER)
 
 $(LIB):
 	@make -C ./libft

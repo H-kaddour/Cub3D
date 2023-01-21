@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:29:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/12/07 18:07:01 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:19:05 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	draw_line(t_data *data, int chk)
 	int	x;
 	int	y;
 	int	clr;
-	char    *dst;
+	//char    *dst;
 
 	i = 0;
 	x = data->draw_utils->x;
@@ -177,7 +177,6 @@ void	einstein_drawing(t_data *data)
 	mlx_put_image_to_window(data->mlx->init, data->mlx->win, \
 			data->mlx->utils->img, 0, 0);
 	//mlx_destroy_image(data->mlx->init, data->mlx->utils->img);
-
 
 
 	//if ((data->draw_utils->ply_x_pos / 50) != data->draw_utils->ply_pos_w \
