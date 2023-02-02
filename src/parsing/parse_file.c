@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:52:19 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/12/05 23:04:28 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:29:55 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,36 +24,6 @@ static int	skip_space(char *line)
 	return (i);
 }
 
-static int	add_color_elem(t_data *data, char *line)
-{
-	int		i;
-	int		j;
-	int		nbr;
-	char	**sp;
-
-	i = 0;
-	sp = ft_split(data, line, ',');
-	//add_split_garabage(data, sp);
-	while (sp[i])
-	{
-		j = 0;
-		//handle + sign too only not - sgin
-		while (sp[i][j])
-		{
-			if (!(sp[i][j] >= '0' && sp[i][j] <= '9'))
-				error_file("Error:\n in color");
-			j++;
-		}
-		nbr = ft_atoi(sp[i]);
-		if (!(nbr >= 0 && nbr <= 255))
-			error_file("Error:\n invalid color");
-		i++;
-	}
-	if (i != 3)
-		error_file("Error:\n invalid RGB colors");
-	return (color_converter(data, sp));
-}
-
 static void	parse_the_line(t_data *data, char *line)
 {
 	int		i;
@@ -62,7 +32,6 @@ static void	parse_the_line(t_data *data, char *line)
 
 	i = 0;
 	elem = ft_split(data, ELEM, ' ');
-	//add_split_garabage(data, elem);
 	while (elem[i])
 	{
 		if (!ft_strncmp(elem[i], line, ft_strlen(elem[i])))
@@ -79,46 +48,8 @@ static void	parse_the_line(t_data *data, char *line)
 		if (line[j] != ' ' && !(line[j] >= 9 && line[j] <= 13))
 			error_file("Error:\ndifferent element in the map");
 		j += skip_space(&line[j]);
-		if (i >= 4)
-		{
-			if (i == 4)
-			{
-				if (data->color->floor)
-					error_file("Error\nF already exist");
-				data->color->floor = add_color_elem(data, &line[j]);
-			}
-			else
-			{
-				if (data->color->ceiling)
-					error_file("Error\nC already exist");
-				data->color->ceiling = add_color_elem(data, &line[j]);
-			}
-		}
-		else
-			if (!ft_strncmp(line, "NO", 2))
-			{
-				if (data->ply_stat->north)
-					error_file("Error\nNO already exist");
-				data->ply_stat->north = add_texture_elem(data, &line[j]);
-			}
-			if (!ft_strncmp(line, "SO", 2))
-			{
-				if (data->ply_stat->south)
-					error_file("Error\nSO already exist");
-				data->ply_stat->south = add_texture_elem(data, &line[j]);
-			}
-			if (!ft_strncmp(line, "EA", 2))
-			{
-				if (data->ply_stat->east)
-					error_file("Error\nEA already exist");
-				data->ply_stat->east = add_texture_elem(data, &line[j]);
-			}
-			if (!ft_strncmp(line, "WE", 2))
-			{
-				if (data->ply_stat->west)
-					error_file("Error\nWE already exist");
-				data->ply_stat->west = add_texture_elem(data, &line[j]);
-			}
+		check_color(data, i, &line[j]);
+		check_texture(data, &line[j]);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 16:29:46 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/30 13:31:17 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/01 19:14:53 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -76,5 +76,6 @@ char	**ft_split(t_data *data, char const *s, char c)
 	w = 0;
 	while (ptr[w])
 		garbage_collector(data, ptr[w++]);
+	garbage_collector(data, ptr);
 	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:55:15 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/13 21:02:14 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:36:01 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ static void	cpy_map(t_data *data, char *map, char *line)
 		else if (!line[i])
 		{
 			while (i < data->map->width)
-			{
-				map[i] = 'D';
-				i++;
-			}
+				map[i++] = 'D';
 		}
 		else
 			map[i] = line[i];

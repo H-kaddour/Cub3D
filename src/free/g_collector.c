@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:46:17 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/12/06 13:13:02 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/01 19:17:59 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 void	free_all(t_data *data)
 {
-	t_free	*prev;
-	t_free	*trav;
+	t_free	*node;
 
-	trav = data->g_collect;
-	while (trav)
+	node = data->g_collect;
+	while (node)
 	{
-		if (trav->value)
-			free(trav->value);
-		prev = trav;
-		trav = trav->next;
-		free(prev);
+		if (node->value)
+			free(node->value);
+		free(node);
+		node = node->next;
 	}
 }
 

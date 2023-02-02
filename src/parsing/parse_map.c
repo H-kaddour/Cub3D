@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:58:41 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/13 21:14:57 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:39:14 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ static void	check_coordinate_begin_end(t_data *data)
 			error_file("error\nmap border are not close");
 		j++;
 	}
-	while (data->map->map[i])
+	while (data->map->map[i + 1])
 		i++;
-	i--;
 	j = 0;
 	while (data->map->map[i][j])
 	{

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:47:49 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/01/15 17:44:20 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:43:03 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,77 +23,49 @@ int	keys(int key, t_data *data)
 {
 	if (key == ESC)
 		close_win(data);
-	//if (key == 0)
-	//{
-	//	data->draw_utils->ply_x_pos -= 10;
-	//	//data->key_mv->ply_x_move -= 10;
-	//}
 	if (key == RIGHT)
 	{
-		if (data->map->map[((data->draw_utils->ply_y_pos) + 20) / 50]\
-				[((data->draw_utils->ply_x_pos + 10) + 20) / 50] != '1')
+		if (data->map->map[((data->draw_utils->ply_y_pos) + 20) / SQR_SIZE]\
+				[((data->draw_utils->ply_x_pos + 10) + 20) / SQR_SIZE] != '1')
 		{
-				data->draw_utils->ply_x_pos += 10;
-			//mlx_clear_window(data->mlx->init, data->mlx->win);
+			data->draw_utils->ply_x_pos += 10;
 			mlx_destroy_image(data->mlx->init, data->mlx->utils->img);
 			einstein_drawing(data);
 		}
-		//data->draw_utils->ply_x_pos += 10;
-		//data->key_mv->ply_x_move += 10;
 	}
 	if (key == LEFT)
 	{
 
-		if (data->map->map[((data->draw_utils->ply_y_pos) + 20) / 50]\
-				[((data->draw_utils->ply_x_pos - 10) + 20) / 50] != '1')
+		if (data->map->map[((data->draw_utils->ply_y_pos) + 20) / SQR_SIZE]\
+				[((data->draw_utils->ply_x_pos - 10) + 20) / SQR_SIZE] != '1')
 		{
-				data->draw_utils->ply_x_pos -= 10;
-			//mlx_clear_window(data->mlx->init, data->mlx->win);
+			data->draw_utils->ply_x_pos -= 10;
 			mlx_destroy_image(data->mlx->init, data->mlx->utils->img);
 			einstein_drawing(data);
 		}
-		//data->key_mv->ply_y_move -= 10;
 	}
 	if (key == UP)
 	{
-
-		if (data->map->map[((data->draw_utils->ply_y_pos - 10) + 20) / 50]\
-				[((data->draw_utils->ply_x_pos) + 20) / 50] != '1')
+		if (data->map->map[((data->draw_utils->ply_y_pos - 10) + 20) / SQR_SIZE]\
+				[((data->draw_utils->ply_x_pos) + 20) / SQR_SIZE] != '1')
 		{
-				data->draw_utils->ply_y_pos -= 10;
-			//mlx_clear_window(data->mlx->init, data->mlx->win);
+			data->draw_utils->ply_y_pos -= 10;
 			mlx_destroy_image(data->mlx->init, data->mlx->utils->img);
 			einstein_drawing(data);
 		}
-		//data->key_mv->ply_y_move -= 10;
 	}
 	if (key == DOWN)
 	{
-		if (data->map->map[((data->draw_utils->ply_y_pos + 10) + 20) / 50]\
-				[((data->draw_utils->ply_x_pos) + 20) / 50] != '1')
+		if (data->map->map[((data->draw_utils->ply_y_pos + 10) + 20) / SQR_SIZE]\
+				[((data->draw_utils->ply_x_pos) + 20) / SQR_SIZE] != '1')
 		{
-				data->draw_utils->ply_y_pos += 10;
-			//mlx_clear_window(data->mlx->init, data->mlx->win);
+			data->draw_utils->ply_y_pos += 10;
 			mlx_destroy_image(data->mlx->init, data->mlx->utils->img);
 			einstein_drawing(data);
 		}
-		//data->draw_utils->ply_y_pos += 10;
-		//data->key_mv->ply_y_move += 10;
 	}
-	//einstein_drawing(data);
 	return (0);
 }
-
-//int	loop(t_data *data)
-//{
-//	//printf("%d\n", key);
-//	einstein_drawing(data);
-//	//mlx_key_hook(data->mlx->win, keys, data);
-//	//mlx_destroy_image(data->mlx->init, data->mlx->utils->img);
-//	//einstein_drawing(data);
-//
-//	return (0);
-//}
 
 void	window_init(t_data *data)
 {
@@ -101,9 +73,7 @@ void	window_init(t_data *data)
 	data->mlx->win = mlx_new_window(data->mlx->init, WIN_W, WIN_H, "Cub3D");
 	catch_player_pos(data);
 	einstein_drawing(data);
-	//mlx_key_hook(data->mlx->win, keys, data);
 	mlx_hook(data->mlx->win, 17, 1L<<0, close_win, data);
 	mlx_hook(data->mlx->win, 2, 1L<<0, keys, data);
-	//mlx_loop_hook(data->mlx->init, loop, data);
 	mlx_loop(data->mlx->init);
 }

@@ -6,7 +6,7 @@
 #    By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/04 20:10:00 by hkaddour          #+#    #+#              #
-#    Updated: 2023/01/18 13:12:13 by hkaddour         ###   ########.fr        #
+#    Updated: 2023/02/01 19:12:03 by hkaddour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ all : $(NAME)
 
 %.o: %.c $(HEADER)
 	@/bin/echo -n "."
-	@$(CC) $(CFLAGS) -c $^ -I $(HEADER)
+	@$(CC) $(CFLAGS) -c $^
 
 $(NAME): $(OBJS)
 	@ar -rc $@ $^

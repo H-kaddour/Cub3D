@@ -6,7 +6,7 @@
 #    By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/23 21:52:28 by hkaddour          #+#    #+#              #
-#    Updated: 2023/01/15 17:34:34 by hkaddour         ###   ########.fr        #
+#    Updated: 2023/02/02 13:28:37 by hkaddour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,9 @@ GNL = $(addprefix gnl/, gnl.c)
 #FREE = $(addprefix free/, g_collector.c g_collector_utils.c)
 #SRC = $(addprefix src/, main.c utils.c $(PARSE) $(ERROR) $(FREE))
 SRC = $(addprefix src/, main.c utils.c parsing/read_file.c parsing/parse_file.c \
-			error/error_handling.c free/g_collector.c free/g_collector_utils.c \
-			parsing/color_converter.c parsing/texture_check.c parsing/allocate_map.c \
-			parsing/parse_map.c drawing/window_utils.c drawing/drawing.c drawing/images.c \
-			drawing/rays.c)
+			error/error_handling.c free/g_collector.c parsing/color_converter.c \
+			parsing/clr_texture_chk.c parsing/allocate_map.c parsing/parse_map.c \
+			drawing/window_utils.c drawing/drawing.c drawing/images.c drawing/rays.c)
 
 OBJS = $(SRC:.c=.o)
 GNL_OBJ = $(GNL:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/01/15 17:40:26 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:44:06 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,9 @@ char	*add_texture_elem(t_data *data, char *file);
 int		color_converter(t_data *data, char **rgb);
 void	parse_map(t_data *data, char **map);
 void	check_map_error(t_data *data);
+void	check_color(t_data *data, int i, char *line);
+void	check_texture(t_data *data, char *line);
+int		add_color_elem(t_data *data, char *line);
 
 /******** Function of drawing **********/
 void	window_init(t_data *data);

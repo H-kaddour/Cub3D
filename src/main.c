@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:01 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/12/06 21:48:46 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:44:12 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ int	main(int ac, char **av)
 	}
 	else
 		error_file("Invalid argument.");
+	return (0);
 }
