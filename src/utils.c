@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/12/06 13:12:43 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/05 13:45:00 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*allocation(t_data *data, int count, int size)
 
 char	*add_dup(t_data *data, char *s)
 {
-	char *ptr;
+	char	*ptr;
 
 	ptr = ft_strdup(s);
 	garbage_collector(data, ptr);
@@ -39,6 +39,6 @@ void	init_data(t_data *data, char *file)
 	data->map = allocation(data, 1, sizeof(t_map));
 	data->mlx = allocation(data, 1, sizeof(t_mlx));
 	data->draw_utils = allocation(data, 1, sizeof(t_coord));
-	data->key_mv = allocation(data, 1, sizeof(t_key_move));
+	//data->key_mv = allocation(data, 1, sizeof(t_key_move));
 	data->mlx->utils = allocation(data, 1, sizeof(t_img));
 }

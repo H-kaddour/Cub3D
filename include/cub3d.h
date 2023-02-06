@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/02 14:44:06 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/05 13:31:10 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define WIN_W 1720
 # define WIN_H 960
 # define SQR_SIZE 50
-//# define ROT_RIGHT 0
-//# define ROT_LEFT 0
+# define ROT_RIGHT 123
+# define ROT_LEFT 124
 # define RIGHT 2
 # define LEFT 0
 # define UP 13
@@ -122,4 +122,5 @@ void	make_and_init_image(t_data *data);
 void	mlx_put_pixel_to_img(t_data *data, int x, int y, int clr);
 void	draw_rays(t_data *data);
 
+void	dda(t_data *data, int	loun);
 #endif

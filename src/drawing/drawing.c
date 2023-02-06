@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:29:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/02 14:39:12 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/06 19:04:48 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ void	catch_player_pos(t_data *data)
 		{
 			if (data->map->map[i][j] == data->map->player)
 			{
-				data->draw_utils->ply_x_index = j * SQR_SIZE;
-				data->draw_utils->ply_y_index = i * SQR_SIZE;
-
+				//data->draw_utils->ply_x_index = j * SQR_SIZE;
+				//data->draw_utils->ply_y_index = i * SQR_SIZE;
 				data->draw_utils->ply_x_pos = j * SQR_SIZE;
 				data->draw_utils->ply_y_pos = i * SQR_SIZE;
 			}
@@ -46,7 +45,7 @@ static int	color_desision(t_data *data, int i, int x, int chk)
 	{
 		if (i == 0 || i == SQR_SIZE - 1)
 			clr = 0xD6E4E5;
-		else if (x == data->draw_utils->x || x == (data->draw_utils->x + 50) - 1)
+		else if (x == data->draw_utils->x || x == (data->draw_utils->x + SQR_SIZE) - 1)
 			clr = 0xD6E4E5;
 		else
 			clr = 0xFBFACD;
@@ -56,7 +55,7 @@ static int	color_desision(t_data *data, int i, int x, int chk)
 	{
 		if (i == 0 || i == SQR_SIZE - 1)
 			clr = 0xFF8FB1;
-		else if (x == data->draw_utils->x || x == (data->draw_utils->x + 50) - 1)
+		else if (x == data->draw_utils->x || x == (data->draw_utils->x + SQR_SIZE) - 1)
 			clr = 0xFF8FB1;
 		else
 			clr = 0xBA94D1;
@@ -89,20 +88,24 @@ static void	draw_line(t_data *data, int chk)
 
 static void	draw_player(t_data *data)
 {
-	int	x;
-	int	y;
+	//int	x;
+	//int	y;
 
-	y = data->draw_utils->ply_y_pos + 20;
-	while (y < data->draw_utils->ply_y_pos + 30)
-	{
-		x = data->draw_utils->ply_x_pos + 20;
-		while (x < data->draw_utils->ply_x_pos + 30)
-		{
-			mlx_put_pixel_to_img(data, x, y, 0x497174);
-			x++;
-		}
-		y++;
-	}
+	//data->draw_utils->ply_x_pos += 25;
+	//data->draw_utils->ply_y_pos += 25;
+	mlx_put_pixel_to_img(data, data->draw_utils->ply_x_pos, data->draw_utils->ply_y_pos, 0x000000);
+	//y = data->draw_utils->ply_y_pos;
+	//while (y < data->draw_utils->ply_y_pos + 30)
+	//{
+	//	x = data->draw_utils->ply_x_pos;
+	//	while (x < data->draw_utils->ply_x_pos + 30)
+	//	{
+	//		mlx_put_pixel_to_img(data, x, y, 0x497174);
+	//		//mlx_put_pixel_to_img(data, x, y, data->color->ceiling);
+	//		x++;
+	//	}
+	//	y++;
+	//}
 }
 
 static void	draw_border_of_map(t_data *data)
@@ -137,8 +140,8 @@ void	einstein_drawing(t_data *data)
 {
 	make_and_init_image(data);
 	draw_border_of_map(data);
-	draw_player(data);
 	draw_rays(data);
+	draw_player(data);
 	mlx_put_image_to_window(data->mlx->init, data->mlx->win, \
 			data->mlx->utils->img, 0, 0);
 }

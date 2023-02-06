@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:01 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/02 14:44:12 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/06 14:59:03 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int	main(int ac, char **av)
 		init_data(&data, av[1]);
 		read_file(&data);
 		parse_file(&data);
+		//for (int i = 0; i < data.map->height; i++)
+		//{
+		//	printf("%s\n", data.map->map[i]);
+		//}
 		window_init(&data);
 	}
 	else

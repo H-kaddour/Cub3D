@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:35:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/01 18:20:31 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:56:19 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	error_alloc(void)
 
 void	error_file(char *msg)
 {
-	printf("%s\n", msg);
+	int	i;
+
+	i = 0;
+	while (msg[i])
+		write(2, &msg[i++], 1);
 	exit(1);
 }
