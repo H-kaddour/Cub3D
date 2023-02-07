@@ -6,7 +6,7 @@
 /*   By: amrakibe <amrakibe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:47:49 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/07 21:50:18 by amrakibe         ###   ########.fr       */
+/*   Updated: 2023/02/07 22:06:40 by amrakibe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int keys(int key, t_data *data)
 		close_win(data);
 	left_and_right(key, data);
 	up_and_down(key, data);
-	limite_angle(data->draw_utils->angle);
+	data->draw_utils->angle = limite_angle(data->draw_utils->angle);
 	if (key == ROT_RIGHT)
 	{
 		data->draw_utils->angle -= 5.0 * (M_PI / 180);
