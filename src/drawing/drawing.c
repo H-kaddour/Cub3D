@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: amrakibe <amrakibe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:29:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/06 19:04:48 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:31:46 by amrakibe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,24 +88,24 @@ static void	draw_line(t_data *data, int chk)
 
 static void	draw_player(t_data *data)
 {
-	//int	x;
-	//int	y;
+	int	x;
+	int	y;
 
 	//data->draw_utils->ply_x_pos += 25;
 	//data->draw_utils->ply_y_pos += 25;
-	mlx_put_pixel_to_img(data, data->draw_utils->ply_x_pos, data->draw_utils->ply_y_pos, 0x000000);
-	//y = data->draw_utils->ply_y_pos;
-	//while (y < data->draw_utils->ply_y_pos + 30)
-	//{
-	//	x = data->draw_utils->ply_x_pos;
-	//	while (x < data->draw_utils->ply_x_pos + 30)
-	//	{
-	//		mlx_put_pixel_to_img(data, x, y, 0x497174);
-	//		//mlx_put_pixel_to_img(data, x, y, data->color->ceiling);
-	//		x++;
-	//	}
-	//	y++;
-	//}
+	// mlx_put_pixel_to_img(data, data->draw_utils->ply_x_pos, data->draw_utils->ply_y_pos, 0x000000);
+	y = data->draw_utils->ply_y_pos;
+	while (y < data->draw_utils->ply_y_pos + 7                  )
+	{
+		x = data->draw_utils->ply_x_pos;
+		while (x < data->draw_utils->ply_x_pos + 7)
+		{
+			mlx_put_pixel_to_img(data, x, y, 0x497174);
+			//mlx_put_pixel_to_img(data, x, y, data->color->ceiling);
+			x++;
+		}
+		y++;
+	}
 }
 
 static void	draw_border_of_map(t_data *data)
