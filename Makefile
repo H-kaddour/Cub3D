@@ -6,7 +6,7 @@
 #    By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/23 21:52:28 by hkaddour          #+#    #+#              #
-#    Updated: 2023/02/05 13:46:43 by hkaddour         ###   ########.fr        #
+#    Updated: 2023/02/08 19:51:21 by hkaddour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = $(addprefix src/, main.c utils.c parsing/read_file.c parsing/parse_file.c 
 			error/error_handling.c free/g_collector.c parsing/color_converter.c \
 			parsing/clr_texture_chk.c parsing/allocate_map.c parsing/parse_map.c \
 			drawing/window_utils.c drawing/drawing.c drawing/images.c drawing/rays.c \
-			drawing/dda_algorithm.c)
+			drawing/dda_algorithm.c drawing/key_strokes.c drawing/math_utils.c)
 
 OBJS = $(SRC:.c=.o)
 GNL_OBJ = $(GNL:.c=.o)

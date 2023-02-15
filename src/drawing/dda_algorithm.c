@@ -6,13 +6,13 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 14:00:41 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/06 16:00:56 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:50:24 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-//int	bigg(int a, int b)
+//double	bigg(int a, int b)
 //{
 //	if (a > b)
 //		return (a);

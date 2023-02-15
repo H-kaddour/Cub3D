@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/05 13:31:10 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:46:46 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 # include <math.h>
 # include <mlx.h>
 # define ELEM "NO SO EA WE F C"
+//# define  "E N W S"
 # define WIN_W 1720
 # define WIN_H 960
+# define SPEED 2.0
+# define FOV 60
 # define SQR_SIZE 50
 # define ROT_RIGHT 123
 # define ROT_LEFT 124
@@ -29,6 +32,7 @@
 # define UP 13
 # define DOWN 1
 # define ESC 53
+# define INT_MAX 2147483647
 # include "../libft/libft.h"
 # include "../gnl/gnl.h"
 # include "draw.h"
@@ -37,7 +41,9 @@ typedef struct image_utils t_img;
 
 typedef struct s_coordinate t_coord;
 
-typedef struct key_move	t_key_move;
+typedef struct s_keys	t_key;
+
+typedef struct s_camera	t_cam;
 
 typedef struct player_stat
 {
@@ -80,12 +86,14 @@ typedef struct s_data
 	char		*n_file;
 	int			fd_map;
 	char		**r_file;
+	t_key		keys;
 	p_stat	*ply_stat;
 	t_color	*color;
 	t_map		*map;
 	t_mlx		*mlx;
 	t_coord	*draw_utils;
-	t_key_move	*key_mv;
+	t_keys	*key_mv;
+	t_cam		*ray;
 	t_free	*g_collect;
 } t_data;
 
@@ -121,6 +129,16 @@ void	catch_player_pos(t_data *data);
 void	make_and_init_image(t_data *data);
 void	mlx_put_pixel_to_img(t_data *data, int x, int y, int clr);
 void	draw_rays(t_data *data);
-
 void	dda(t_data *data, int	loun);
+
+int	did_it_hit_the_wall(t_data *data, double coord1, double coord2);
+/******** Function of Keys **********/
+int	keys(t_data *data);
+int	close_win(t_data *data);
+
+/******** Function of Math **********/
+double	convert_deg2rad(double degree);
+double	convert_rad2deg(double radians);
+//void		chk_degree_low_or_high(double angle);
+
 #endif

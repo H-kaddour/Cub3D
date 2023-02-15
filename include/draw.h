@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:19:56 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/06 18:24:39 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/15 19:11:17 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,38 @@ typedef struct s_coordinate
 	//int	ply_y_index;
 } t_coord;
 
-//typedef struct s_camera
-//{
-//	//int	ply_x_move;
-//	//int	ply_y_move;
-//} t_cam;
+typedef	struct	s_keys
+{
+	int	key_up;
+	int	key_down;
+	int	key_right;
+	int	key_left;
+	int	rot_lft;
+	int	rot_rght;
+	int	chk_mlx_loop;
+} t_keys;
+
+typedef struct s_camera
+{
+	double	ray_angle;
+
+	double	x_horizontal;
+	double	y_horizontal;
+	double	x_vertical;
+	double	y_vertical;
+
+	double	dist_vert;
+	double	dist_horz;
+
+	int		chk_if_horz;
+	int		chk_if_vert;
+
+	double	x_step;
+	double	y_step;
+	int		sight;
+	//int	ply_x_move;
+	//int	ply_y_move;
+} t_cam;
 
 typedef struct image_utils
 {
