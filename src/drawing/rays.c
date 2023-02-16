@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:32:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/15 21:16:22 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/16 20:36:13 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,19 @@ void	get_first_horizontal_intersect(t_data *data, double angle)
 	data->draw_utils->y = data->draw_utils->ply_y_pos;
 	//data->ray->sight = ray_sight(data);
 	//if (data->ray->sight)
-	if (((int)round(convert_rad2deg(angle)) >= 180 && \
-			(int)round(convert_rad2deg(angle) <= 360)))
+
+	//if (((int)floor(convert_rad2deg(angle)) >= 180 && \
+	//		(int)floor(convert_rad2deg(angle) <= 360)))
+	if ((int)convert_rad2deg(angle) >= 180 && \
+			(int)convert_rad2deg(angle) <= 360)
 		data->ray->y_horizontal = floor(data->draw_utils->y / SQR_SIZE) * SQR_SIZE;
 	//else if ((int)floor(convert_rad2deg(angle) == 0))
 	//	data->ray->y_horizontal = floor(data->draw_utils->y / SQR_SIZE) * SQR_SIZE;
-	else if ((int)round(convert_rad2deg(angle)) > 0 \
-			&& (int)round(convert_rad2deg(angle) < 180))
+
+	//else if ((int)floor(convert_rad2deg(angle)) >= 0 \
+	//		&& (int)floor(convert_rad2deg(angle) < 180))
+	else if ((int)convert_rad2deg(angle) >= 0 \
+			&& (int)convert_rad2deg(angle) < 180)
 		data->ray->y_horizontal = floor(data->draw_utils->y / SQR_SIZE) * SQR_SIZE + SQR_SIZE;
 
 	data->ray->x_horizontal = data->draw_utils->x + \
@@ -48,8 +54,9 @@ void	get_next_horizontal_intersect(t_data *data, double angle)
 	//data->draw_utils->x = data->ray->x_horizontal;
 	//data->draw_utils->y = data->ray->y_horizontal;
 	//if (!data->ray->sight)
-	if (((int)round(convert_rad2deg(angle)) >= 180 && \
-			(int)round(convert_rad2deg(angle) <= 360)))
+
+	if (((int)convert_rad2deg(angle) >= 180 && \
+			(int)convert_rad2deg(angle) <= 360))
 	{
 		data->ray->y_horizontal -= SQR_SIZE;
 		data->ray->x_horizontal += (-SQR_SIZE / tan(angle));
@@ -59,8 +66,9 @@ void	get_next_horizontal_intersect(t_data *data, double angle)
 	//	data->ray->y_horizontal -= SQR_SIZE;
 	//	data->ray->x_horizontal += (-SQR_SIZE / tan(angle));
 	//}
-	else if ((int)round(convert_rad2deg(angle)) > 0 \
-			&& (int)round(convert_rad2deg(angle) < 180))
+
+	else if ((int)convert_rad2deg(angle) >= 0 \
+			&& (int)convert_rad2deg(angle) < 180)
 	{
 		data->ray->y_horizontal += SQR_SIZE;
 		data->ray->x_horizontal += (SQR_SIZE / tan(angle));
@@ -73,15 +81,19 @@ void	get_first_vertical_intersect(t_data *data, double angle)
 {
 	data->draw_utils->x = data->draw_utils->ply_x_pos;
 	data->draw_utils->y = data->draw_utils->ply_y_pos;
-	if (((int)round(convert_rad2deg(angle)) >= 270 && (int)round(convert_rad2deg(angle) <= 360)) || \
-			((int)round(convert_rad2deg(angle)) >= 0 && (int)round(convert_rad2deg(angle) <= 90)))
+	//if (((int)round(convert_rad2deg(angle)) >= 270 && (int)round(convert_rad2deg(angle) <= 360)) || \
+	//		((int)round(convert_rad2deg(angle)) >= 0 && (int)round(convert_rad2deg(angle) <= 90)))
+	if (((int)(convert_rad2deg(angle)) >= 270 && (int)(convert_rad2deg(angle) <= 360)) || \
+			((int)(convert_rad2deg(angle)) >= 0 && (int)(convert_rad2deg(angle) <= 90)))
 	{
 		data->ray->x_vertical = floor(data->draw_utils->x / SQR_SIZE) * SQR_SIZE + SQR_SIZE;
 		data->ray->y_vertical = data->draw_utils->y + \
 			(data->ray->x_vertical - data->draw_utils->x) * tan(angle);
 	}
-	else if ((int)round(convert_rad2deg(angle)) > 90 \
-			&& (int)round(convert_rad2deg(angle) < 270))
+	//else if ((int)round(convert_rad2deg(angle)) > 90 \
+	//		&& (int)round(convert_rad2deg(angle) < 270))
+	else if ((int)(convert_rad2deg(angle)) > 90 \
+			&& (int)(convert_rad2deg(angle) < 270))
 	{
 		data->ray->x_vertical = floor(data->draw_utils->x / SQR_SIZE) * SQR_SIZE;
 		data->ray->y_vertical = data->draw_utils->y + \
@@ -229,6 +241,8 @@ void	get_horizontal_intersect(t_data *data, double angle)
 {
 	if ((int)round(convert_rad2deg(angle)) != 0 \
 			&& (int)round(convert_rad2deg(angle)) != 180)
+	//if ((int)convert_rad2deg(angle) != 0 \
+	//		&& (int)convert_rad2deg(angle) != 180)
 	{
 		get_first_horizontal_intersect(data, angle);
 		if (data->ray->x_horizontal < 0 || data->ray->x_horizontal > data->map->width * SQR_SIZE \
@@ -237,12 +251,12 @@ void	get_horizontal_intersect(t_data *data, double angle)
 			data->ray->chk_if_horz = 1;
 			return ;
 		}
-		if (did_it_hit_the_wall(data, data->ray->x_horizontal, data->ray->y_horizontal + 10) && \
-				did_it_hit_the_wall(data, data->ray->x_horizontal, data->ray->y_horizontal - 10))
+		if (did_it_hit_the_wall(data, data->ray->x_horizontal, data->ray->y_horizontal + round(SQR_SIZE / 10)) && \
+				did_it_hit_the_wall(data, data->ray->x_horizontal, data->ray->y_horizontal - round(SQR_SIZE / 10)))
 		{
 			while (1)
 			{
-				//printf("horizontal\n");
+				//printf("angle = %d\n", (int)floor(convert_rad2deg(angle)));
 				get_next_horizontal_intersect(data, angle);
 				if (data->ray->x_horizontal < 0 || data->ray->x_horizontal > data->map->width * SQR_SIZE \
 						|| data->ray->y_horizontal < 0 || data->ray->y_horizontal > data->map->height * SQR_SIZE)
@@ -250,8 +264,8 @@ void	get_horizontal_intersect(t_data *data, double angle)
 					data->ray->chk_if_horz = 1;
 					break ;
 				}
-				if (!did_it_hit_the_wall(data, data->ray->x_horizontal, data->ray->y_horizontal + 10) || \
-						!did_it_hit_the_wall(data, data->ray->x_horizontal, data->ray->y_horizontal - 10))
+				if (!did_it_hit_the_wall(data, data->ray->x_horizontal, data->ray->y_horizontal + round(SQR_SIZE / 10)) || \
+						!did_it_hit_the_wall(data, data->ray->x_horizontal, data->ray->y_horizontal - round(SQR_SIZE / 10)))
 					break ;
 			}
 		}
@@ -279,8 +293,8 @@ void	get_vertical_intersect(t_data *data, double angle)
 			data->ray->chk_if_vert = 1;
 			return ;
 		}
-		if (did_it_hit_the_wall(data, data->ray->x_vertical + 10, data->ray->y_vertical) && \
-				did_it_hit_the_wall(data, data->ray->x_vertical - 10, data->ray->y_vertical))
+		if (did_it_hit_the_wall(data, data->ray->x_vertical + round(SQR_SIZE / 10), data->ray->y_vertical) && \
+				did_it_hit_the_wall(data, data->ray->x_vertical - round(SQR_SIZE / 10), data->ray->y_vertical))
 		{
 			while (1)
 			{
@@ -294,8 +308,8 @@ void	get_vertical_intersect(t_data *data, double angle)
 					break ;
 				}
 				//+ not working here segv
-				if (!did_it_hit_the_wall(data, data->ray->x_vertical + 10, data->ray->y_vertical) || \
-						!did_it_hit_the_wall(data, data->ray->x_vertical - 10, data->ray->y_vertical))
+				if (!did_it_hit_the_wall(data, data->ray->x_vertical + round(SQR_SIZE / 10), data->ray->y_vertical) || \
+						!did_it_hit_the_wall(data, data->ray->x_vertical - round(SQR_SIZE / 10), data->ray->y_vertical))
 					break ;
 			}
 		}
@@ -386,8 +400,8 @@ void	draw_rays(t_data *data)
 	//printf("angle = %f\n", convert_rad2deg(data->draw_utils->angle));
 	//printf("x = %f | y = %f\n", data->draw_utils->x, data->draw_utils->y);
 	//printf("x_next = %f | y_next = %f\n", data->draw_utils->x_next, data->draw_utils->y_next);
-	//dda(data, 0x00ff00);
-	//return ;
+	dda(data, 0x00ff00);
+	return ;
 
 
 	i = 0;
@@ -407,8 +421,12 @@ void	draw_rays(t_data *data)
 		//if i floor it it work in 0 degree but it goes into a segv
 		//if ((int)floor(convert_rad2deg(angle)) == 360)
 		//if ((int)round(convert_rad2deg(angle)) == 360)
-		if ((int)round(convert_rad2deg(angle)) == 360)
+		//if ((int)convert_rad2deg(angle) == 360)
+		if ((int)convert_rad2deg(angle) == 360)
+		{
+			//printf("angle = %f\n", convert_rad2deg(angle));
 			angle = 0;
+		}
 		//this calcul should save in a variable
 		angle += convert_deg2rad(FOV) / WIN_W;
 		i++;
