@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:29:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/15 19:33:47 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/16 21:32:46 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,6 @@ void	draw_border_of_map(t_data *data)
 
 void	einstein_drawing(t_data *data)
 {
-	data->ray->chk_if_horz = 0;
-	data->ray->chk_if_vert = 0;
 	make_and_init_image(data);
 	draw_border_of_map(data);
 	draw_rays(data);
