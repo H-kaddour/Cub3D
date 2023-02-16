@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:32:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/16 20:36:13 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/16 20:40:25 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -400,8 +400,8 @@ void	draw_rays(t_data *data)
 	//printf("angle = %f\n", convert_rad2deg(data->draw_utils->angle));
 	//printf("x = %f | y = %f\n", data->draw_utils->x, data->draw_utils->y);
 	//printf("x_next = %f | y_next = %f\n", data->draw_utils->x_next, data->draw_utils->y_next);
-	dda(data, 0x00ff00);
-	return ;
+	//dda(data, 0x00ff00);
+	//return ;
 
 
 	i = 0;
