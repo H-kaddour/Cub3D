@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:29:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/16 21:32:46 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/17 20:04:16 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	catch_player_pos(t_data *data)
 			{
 				data->draw_utils->ply_x_pos = j * SQR_SIZE + (SQR_SIZE / 2);
 				data->draw_utils->ply_y_pos = i * SQR_SIZE + (SQR_SIZE / 2);
+				//data->draw_utils->ply_x_index = j * 10 + (10 / 2);
+				//data->draw_utils->ply_y_index = i * 10 + (10 / 2);
 				return ;
 			}
 			j++;
@@ -137,7 +139,12 @@ void	einstein_drawing(t_data *data)
 	make_and_init_image(data);
 	draw_border_of_map(data);
 	draw_rays(data);
-	draw_player(data);
+	//draw_player(data);
+	//data->draw_utils->x = data->draw_utils->ply_x_index;
+	//data->draw_utils->y = data->draw_utils->ply_y_index;
+	//data->draw_utils->x_next = data->draw_utils->x + cos(data->draw_utils->angle) * 5;
+	//data->draw_utils->y_next = data->draw_utils->y + sin(data->draw_utils->angle) * 5;
+	//dda(data, 0x00ff00);
 	mlx_put_image_to_window(data->mlx->init, data->mlx->win, \
 			data->mlx->utils->img, 0, 0);
 }

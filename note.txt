@@ -48,6 +48,8 @@ Algo to draw the rays:
 		until u finish and u draw a line
 count len with pitagorse whose is less horizontal or vertical
 
+Algo of 3D
+
 
         1111111111111111111111111
         1000100001100000000000001

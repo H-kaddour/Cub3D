@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:47:49 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/15 19:24:00 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/17 17:45:54 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_drawing_data(t_data *data)
 	//ray in 180 also get fucked
 	//data->draw_utils->angle = convert_deg2rad(0 + 30);
 	//data->draw_utils->angle = convert_deg2rad(0 + 30);
-	data->draw_utils->angle = convert_deg2rad(0);
+	data->draw_utils->angle = convert_deg2rad(270);
 	//this one init where the angle of the rays will be start
 	if (data->draw_utils->angle == 0)
 		data->ray->ray_angle = convert_deg2rad(360 - (FOV / 2));

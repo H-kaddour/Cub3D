@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:32:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/16 21:35:24 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/17 20:04:10 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,12 +158,20 @@ void	compare_the_intersects(t_data *data)
 	if (data->ray->chk_if_horz)
 	{
 		//for vertical
+		x = fabs(data->draw_utils->x - data->ray->x_vertical);
+		y = fabs(data->draw_utils->y - data->ray->y_vertical);
+		data->ray->dist_vert = sqrt((x * x) + (y * y));
+		data->ray->ray_dist = data->ray->dist_vert;
 		data->draw_utils->x_next = data->ray->x_vertical;
 		data->draw_utils->y_next = data->ray->y_vertical;
 	}
 	else if (data->ray->chk_if_vert)
 	{
 		//for horizontal
+		x = fabs(data->draw_utils->x - data->ray->x_horizontal);
+		y = fabs(data->draw_utils->y - data->ray->y_horizontal);
+		data->ray->dist_horz = sqrt((x * x) + (y * y));
+		data->ray->ray_dist = data->ray->dist_horz;
 		data->draw_utils->x_next = data->ray->x_horizontal;
 		data->draw_utils->y_next = data->ray->y_horizontal;
 	}
@@ -177,11 +185,13 @@ void	compare_the_intersects(t_data *data)
 		data->ray->dist_vert = sqrt((x * x) + (y * y));
 		if ((int)round(data->ray->dist_horz) < (int)round(data->ray->dist_vert))
 		{
+			data->ray->ray_dist = data->ray->dist_horz;
 			data->draw_utils->x_next = data->ray->x_horizontal;
 			data->draw_utils->y_next = data->ray->y_horizontal;
 		}
 		else
 		{
+			data->ray->ray_dist = data->ray->dist_vert;
 			data->draw_utils->x_next = data->ray->x_vertical;
 			data->draw_utils->y_next = data->ray->y_vertical;
 		}
@@ -203,7 +213,20 @@ void	draw_rays(t_data *data)
 	i = 0;
 	angle = data->ray->ray_angle;
 	angle_increment = convert_deg2rad(FOV) / WIN_W;
+	data->draw_utils->x1 = 0;
+	data->draw_utils->y = 0;
 	//this draw all the rays
+	while ((int)data->draw_utils->x1 <= WIN_W)
+	{
+		data->draw_utils->y1 = 0;
+		while ((int)data->draw_utils->y1 <= WIN_H / 2)
+			mlx_put_pixel_to_img(data, data->draw_utils->x1, data->draw_utils->y1++, data->color->ceiling);
+		while ((int)data->draw_utils->y1 <= (WIN_H / 2) * 2)
+			mlx_put_pixel_to_img(data, data->draw_utils->x1, data->draw_utils->y1++, data->color->floor);
+		data->draw_utils->x1++;
+	}
+	data->draw_utils->x1 = 0;
+	//return ;
 	while (i <= WIN_W)
 	{
 		data->ray->chk_if_horz = 0;
@@ -211,11 +234,15 @@ void	draw_rays(t_data *data)
 		get_horizontal_intersect(data, angle);
 		get_vertical_intersect(data, angle);
 		compare_the_intersects(data);
-		dda(data, 0xff0000);
+		look_im_3d_now(data);
+
+		//dda(data, 0xff0000);
 		if ((int)convert_rad2deg(angle) == 360)
 			angle = 0;
 		//this calcul should save in a variable
 		//angle += convert_deg2rad(FOV) / WIN_W;
+		//if (i == 1)
+		//	return ;
 		angle += angle_increment;
 		i++;
 	}

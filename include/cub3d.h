@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/16 20:30:31 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/17 17:47:24 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define UP 13
 # define DOWN 1
 # define ESC 53
-# define INT_MAX 2147483647
+//# define INT_MAX 2147483647
 # include "../libft/libft.h"
 # include "../gnl/gnl.h"
 # include "draw.h"
@@ -132,6 +132,7 @@ void	draw_rays(t_data *data);
 void	dda(t_data *data, int	loun);
 
 int	did_it_hit_the_wall(t_data *data, double coord1, double coord2);
+void	look_im_3d_now(t_data *data);
 /******** Function of Keys **********/
 int	keys(t_data *data);
 int	close_win(t_data *data);
