@@ -28,6 +28,7 @@ Work with images instead of pixel move the player and work in raysers
 Back again:
 write error code in 2 fd.
 fix int max and min in color it overflows
+color with alot of comma and color an elem after floor it count it with the map
 if Pi turn to 2 pi return it to 0
 
 Algo to draw the rays:
@@ -80,3 +81,12 @@ Algo of 3D
 1000000010000000100000000000111
 10000001 1001001 100000000001
 11111111 111 111 111111111111
+
+
+Fix :
+fix the upstair thing in parsing
+fix the dispiring rays
+fix when the player face the wall i get so slow
+when u draw the wall start with the ceilling then the wall and the floor
+optimize the code and clean it
+

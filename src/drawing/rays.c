@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:32:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/17 20:04:10 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:28:28 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,18 +150,19 @@ void	get_vertical_intersect(t_data *data, double angle)
 		data->ray->chk_if_vert = 1;
 }
 
-void	compare_the_intersects(t_data *data)
+void	compare_the_intersects(t_data *data, double angle)
 {
 	double x;
 	double y;
 
+	(void)angle;
 	if (data->ray->chk_if_horz)
 	{
 		//for vertical
 		x = fabs(data->draw_utils->x - data->ray->x_vertical);
 		y = fabs(data->draw_utils->y - data->ray->y_vertical);
 		data->ray->dist_vert = sqrt((x * x) + (y * y));
-		data->ray->ray_dist = data->ray->dist_vert;
+		data->ray->ray_dist = data->ray->dist_vert * cos(angle - data->draw_utils->angle);
 		data->draw_utils->x_next = data->ray->x_vertical;
 		data->draw_utils->y_next = data->ray->y_vertical;
 	}
@@ -171,7 +172,7 @@ void	compare_the_intersects(t_data *data)
 		x = fabs(data->draw_utils->x - data->ray->x_horizontal);
 		y = fabs(data->draw_utils->y - data->ray->y_horizontal);
 		data->ray->dist_horz = sqrt((x * x) + (y * y));
-		data->ray->ray_dist = data->ray->dist_horz;
+		data->ray->ray_dist = data->ray->dist_horz * cos(angle - data->draw_utils->angle);
 		data->draw_utils->x_next = data->ray->x_horizontal;
 		data->draw_utils->y_next = data->ray->y_horizontal;
 	}
@@ -185,13 +186,13 @@ void	compare_the_intersects(t_data *data)
 		data->ray->dist_vert = sqrt((x * x) + (y * y));
 		if ((int)round(data->ray->dist_horz) < (int)round(data->ray->dist_vert))
 		{
-			data->ray->ray_dist = data->ray->dist_horz;
+			data->ray->ray_dist = data->ray->dist_horz * cos(angle - data->draw_utils->angle);
 			data->draw_utils->x_next = data->ray->x_horizontal;
 			data->draw_utils->y_next = data->ray->y_horizontal;
 		}
 		else
 		{
-			data->ray->ray_dist = data->ray->dist_vert;
+			data->ray->ray_dist = data->ray->dist_vert * cos(angle - data->draw_utils->angle);
 			data->draw_utils->x_next = data->ray->x_vertical;
 			data->draw_utils->y_next = data->ray->y_vertical;
 		}
@@ -233,9 +234,10 @@ void	draw_rays(t_data *data)
 		data->ray->chk_if_vert = 0;
 		get_horizontal_intersect(data, angle);
 		get_vertical_intersect(data, angle);
-		compare_the_intersects(data);
-		look_im_3d_now(data);
+		compare_the_intersects(data, angle);
+		look_im_3d_now(data, angle);
 
+		//return ;
 		//dda(data, 0xff0000);
 		if ((int)convert_rad2deg(angle) == 360)
 			angle = 0;
