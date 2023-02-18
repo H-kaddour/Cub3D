@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:32:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/18 17:28:28 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/18 22:22:38 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ int	ray_sight(t_data *data)
 		return (1);
 	return (0);
 }
+
+//double limite_angle(double angle)
+//{
+//	angle = fmod(angle , M_PI * 2);
+//	if (angle < 0)
+//		angle += M_PI * 2;
+//	return (angle);
+//}
 
 void	get_first_horizontal_intersect(t_data *data, double angle)
 {
@@ -86,8 +94,8 @@ void	get_horizontal_intersect(t_data *data, double angle)
 			&& (int)convert_rad2deg(angle) != 180)
 	{
 		get_first_horizontal_intersect(data, angle);
-		if (data->ray->x_horizontal < 0 || data->ray->x_horizontal > data->map->width * SQR_SIZE \
-				|| data->ray->y_horizontal < 0 || data->ray->y_horizontal > data->map->height * SQR_SIZE)
+		if (data->ray->x_horizontal < 0 || floor(data->ray->x_horizontal / SQR_SIZE) > data->map->width -1 \
+				|| data->ray->y_horizontal < 0 || floor(data->ray->y_horizontal / SQR_SIZE) > data->map->height -1)
 		{
 			data->ray->chk_if_horz = 1;
 			return ;
@@ -98,8 +106,8 @@ void	get_horizontal_intersect(t_data *data, double angle)
 			while (1)
 			{
 				get_next_horizontal_intersect(data, angle);
-				if (data->ray->x_horizontal < 0 || data->ray->x_horizontal > data->map->width * SQR_SIZE \
-						|| data->ray->y_horizontal < 0 || data->ray->y_horizontal > data->map->height * SQR_SIZE)
+				if (data->ray->x_horizontal < 0 || floor(data->ray->x_horizontal / SQR_SIZE) > data->map->width -1 \
+						|| data->ray->y_horizontal < 0 || floor(data->ray->y_horizontal / SQR_SIZE) > data->map->height -1)
 				{
 					data->ray->chk_if_horz = 1;
 					break ;
@@ -121,8 +129,8 @@ void	get_vertical_intersect(t_data *data, double angle)
 	{
 		get_first_vertical_intersect(data, angle);
 		//take this off of change it
-		if (data->ray->x_vertical < 0 || data->ray->x_vertical > data->map->width * SQR_SIZE \
-				|| data->ray->y_vertical < 0 || data->ray->y_vertical > data->map->height * SQR_SIZE)
+		if (data->ray->x_vertical < 0 || floor(data->ray->x_vertical / SQR_SIZE) > data->map->width -1 \
+				|| data->ray->y_vertical < 0 || floor(data->ray->y_vertical / SQR_SIZE) > data->map->height -1)
 		{
 			data->ray->chk_if_vert = 1;
 			return ;
@@ -134,8 +142,8 @@ void	get_vertical_intersect(t_data *data, double angle)
 			{
 				get_next_vertical_intersect(data, angle);
 				//take this off of change it
-				if (data->ray->x_vertical < 0 || data->ray->x_vertical > data->map->width * SQR_SIZE \
-						|| data->ray->y_vertical < 0 || data->ray->y_vertical > data->map->height * SQR_SIZE)
+				if (data->ray->x_vertical < 0 || floor(data->ray->x_vertical /SQR_SIZE) > data->map->width -1 \
+						|| data->ray->y_vertical < 0 || floor(data->ray->y_vertical / SQR_SIZE) > data->map->height -1)
 				{
 					data->ray->chk_if_vert = 1;
 					break ;
@@ -184,7 +192,8 @@ void	compare_the_intersects(t_data *data, double angle)
 		x = fabs(data->draw_utils->x - data->ray->x_vertical);
 		y = fabs(data->draw_utils->y - data->ray->y_vertical);
 		data->ray->dist_vert = sqrt((x * x) + (y * y));
-		if ((int)round(data->ray->dist_horz) < (int)round(data->ray->dist_vert))
+		//if ((int)round(data->ray->dist_horz) < (int)round(data->ray->dist_vert))
+		if ((int)round(data->ray->dist_horz) <= (int)round(data->ray->dist_vert))
 		{
 			data->ray->ray_dist = data->ray->dist_horz * cos(angle - data->draw_utils->angle);
 			data->draw_utils->x_next = data->ray->x_horizontal;

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/18 16:38:11 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/18 22:09:37 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 //# define  "E N W S"
 # define WIN_W 1720
 # define WIN_H 960
-# define SPEED 2.0
+# define SPEED 5.0
 # define FOV 60
 # define SQR_SIZE 50
 # define ROT_RIGHT 123

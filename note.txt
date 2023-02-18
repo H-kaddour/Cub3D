@@ -82,6 +82,9 @@ Algo of 3D
 10000001 1001001 100000000001
 11111111 111 111 111111111111
 
+111
+1S1
+111
 
 Fix :
 fix the upstair thing in parsing

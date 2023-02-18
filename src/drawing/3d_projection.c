@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:17:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/18 17:22:11 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/18 22:25:11 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	look_im_3d_now(t_data *data, double angle)
 	i = 0;
 	(void)angle;
 	//data->ray->dist_ply_proj = (WIN_W / 2) / tan(FOV / 2);
-	//data->ray->dist_ply_proj = (WIN_W / 2) / tan(convert_deg2rad(FOV / 2 * 2));
-	data->ray->dist_ply_proj = (WIN_W / 2) / tan(FOV / 2);
+	data->ray->dist_ply_proj = (WIN_W / 2) / tan(convert_deg2rad(FOV / 2));
+	//data->ray->dist_ply_proj = (WIN_W / 2) / tan(FOV / 2);
 	//funny
 	//data->ray->proj_wall = fabs(SQR_SIZE / data->ray->ray_dist * data->ray->dist_ply_proj * cos(angle));
 	data->ray->proj_wall = fabs(SQR_SIZE / data->ray->ray_dist * data->ray->dist_ply_proj);
@@ -29,10 +29,11 @@ void	look_im_3d_now(t_data *data, double angle)
 	//return ;
 	//data->ray->proj_wall = fabs(SQR_SIZE / data->ray->dist_ply_proj * data->ray->dist_ply_proj);
 	//data->ray->proj_wall = fabs(SQR_SIZE / data->ray->ray_dist) * cos(angle);
-	data->draw_utils->y1 = WIN_H / 2 - round(data->ray->proj_wall);
+	data->draw_utils->y1 = WIN_H / 2 - (data->ray->proj_wall/ 2);
+	//i = data->draw_utils->y1;
 	//printf("y = %f\n", data->draw_utils->y1);
 	//printf();
-	while (i < (int)round(data->ray->proj_wall) * 2)
+	while (i < (int)round(data->ray->proj_wall))
 	{
 		//printf("gg\n");
 		mlx_put_pixel_to_img(data, fabs(data->draw_utils->x1), fabs(data->draw_utils->y1++), 0x0000ff);
