@@ -1,7 +1,7 @@
-NO      ./textures/pussy.xpm
-SO      ./textures/doom.xpm
-EA      ./textures/hkaddour.xpm
-WE      ./textures/yaskour.xpm
+NO      ./textures/psycho.xpm
+SO      ./textures/psycho.xpm
+EA      ./textures/psycho.xpm
+WE      ./textures/psycho.xpm
 
 
 C       21474836490,194,251

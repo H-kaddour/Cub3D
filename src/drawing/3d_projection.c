@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:17:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/19 18:56:22 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/19 20:37:41 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@
 //}
 
 
-//void	look_im_3d_now(t_data *data, double angle)
 void	look_im_3d_now(t_data *data)
 {
 	int	i;
@@ -70,12 +69,12 @@ void	look_im_3d_now(t_data *data)
 	{
 		//mlx_put_pixel_to_img(data, fabs(data->draw_utils->x1), fabs(data->draw_utils->y1++), 0x0000ff);
 		if (i < data->ray->start_wall)
-			mlx_put_pixel_to_img(data, fabs(data->draw_utils->x1), fabs(data->draw_utils->y1++), data->color->ceiling);
+			mlx_put_pixel_to_img(data, fabs(data->draw_utils->x1), fabs(data->draw_utils->y1), data->color->ceiling);
 		else if (i >= data->ray->start_wall && i <= data->ray->end_wall)
-			mlx_put_pixel_to_img(data, fabs(data->draw_utils->x1), fabs(data->draw_utils->y1++), 0x0000ff);
+			mlx_put_pixel_to_img(data, fabs(data->draw_utils->x1), fabs(data->draw_utils->y1), 0xf030ff);
 		else
-			mlx_put_pixel_to_img(data, fabs(data->draw_utils->x1), fabs(data->draw_utils->y1++), data->color->floor);
-    //data->draw_utils->y1++;
+			mlx_put_pixel_to_img(data, fabs(data->draw_utils->x1), fabs(data->draw_utils->y1), data->color->floor);
+    data->draw_utils->y1++;
 		i++;
 	}
 	data->draw_utils->x1++;

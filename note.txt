@@ -51,6 +51,10 @@ count len with pitagorse whose is less horizontal or vertical
 
 Algo of 3D
 
+NO      ./textures/pussy.xpm
+SO      ./textures/doom.xpm
+EA      ./textures/hkaddour.xpm
+WE      ./textures/yaskour.xpm
 
         1111111111111111111111111
         1000100001100000000000001

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/19 18:53:42 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/19 20:37:19 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ void	dda(t_data *data, int	loun);
 
 int	did_it_hit_the_wall(t_data *data, double coord1, double coord2);
 void	look_im_3d_now(t_data *data);
+
 /******** Function of Keys **********/
 int	keys(t_data *data);
 int	close_win(t_data *data);
