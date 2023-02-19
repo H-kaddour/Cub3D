@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:47:49 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/18 20:31:13 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/19 18:09:57 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,28 @@ void	init_drawing_data(t_data *data)
 	}
 	//ray angle 0 x go to inf
 	//ray in 180 also get fucked
-	//data->draw_utils->angle = convert_deg2rad(0 + 30);
+	data->draw_utils->angle = convert_deg2rad(80);
 	//data->draw_utils->angle = convert_deg2rad(0 + 30);
 	//data->draw_utils->angle = convert_deg2rad(0);
 	//this one init where the angle of the rays will be start
-	if (data->draw_utils->angle == 0)
+	if ((int)round(convert_rad2deg(data->draw_utils->angle)) == 0)
 		data->ray->ray_angle = convert_deg2rad(360 - (FOV / 2));
+	else if ((int)round(convert_rad2deg(data->draw_utils->angle)) < 30)
+	{
+		//printf("angle = %d\n", (int)convert_rad2deg(data->draw_utils->angle));
+		data->ray->ray_angle = convert_deg2rad(360 - (fabs(convert_rad2deg(data->draw_utils->angle) - (FOV / 2))));
+		//printf("%f\n", 360 - (fabs(convert_rad2deg(data->draw_utils->angle) - (FOV / 2))));
+		//printf("%f\n", data->ray->ray_angle);
+		//exit(0);
+	}
 	else
 		data->ray->ray_angle = data->draw_utils->angle - convert_deg2rad(FOV / 2);
-	//printf("ply_angle = %f\n", convert_rad2deg(data->draw_utils->angle));
-	//printf("ray_angle = %f\n", convert_rad2deg(data->ray->ray_angle));
+
+	//printf("%f\n", convert_rad2deg(data->ray->ray_angle));
+
+	//else
+	//	data->ray->ray_angle = convert_rad2deg(data->ray->ray_angle) - ;
+	//printf("ray_angle = %f\n", convert(data->ray->ray_angle));
 }
 
 int	key_press(int key, t_data *data)

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:19:56 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/17 19:55:59 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/19 18:34:49 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ typedef struct s_camera
 	double	ray_dist;
 	double	dist_ply_proj;
 	double	proj_wall;
+
+	double	start_wall;
+	double	end_wall;
 
 	//int		sight;
 } t_cam;

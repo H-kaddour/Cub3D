@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:38:22 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/17 19:54:16 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/19 18:25:32 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,21 +118,25 @@ static void	rotation_key(t_data *data)
 	{
 		if ((int)round(convert_rad2deg(data->draw_utils->angle)) == 0)
 			data->draw_utils->angle = (2 * M_PI);
-		data->draw_utils->angle -= convert_deg2rad(5.0);
+		data->draw_utils->angle -= convert_deg2rad(ROT_SPEED);
 		//this one for the ray i will get back to it to optimize it
 		if ((int)round(convert_rad2deg(data->ray->ray_angle)) == 0)
 			data->ray->ray_angle = (2 * M_PI);
-		data->ray->ray_angle = fabs(data->ray->ray_angle - convert_deg2rad(5));
+		data->ray->ray_angle = fabs(data->ray->ray_angle - convert_deg2rad(ROT_SPEED));
 	}
 	if (data->key_mv->rot_lft)
 	{
+		//printf("gg\n");
 		if ((int)round(convert_rad2deg(data->draw_utils->angle)) == 360)
 			data->draw_utils->angle = 0;
-		data->draw_utils->angle += convert_deg2rad(5.0);
+		data->draw_utils->angle += convert_deg2rad(ROT_SPEED);
 		//this one for the ray i will get back to it to optimize it
-		data->ray->ray_angle += convert_deg2rad(5.0);
+		//data->ray->ray_angle += convert_deg2rad(5.0);
 		if ((int)round(convert_rad2deg(data->ray->ray_angle)) == 360)
 			data->ray->ray_angle = 0;
+		data->ray->ray_angle += convert_deg2rad(ROT_SPEED);
+		//printf("ply_angle = %f\n", convert_rad2deg(data->draw_utils->angle));
+		//printf("ray_angle = %f\n", convert_rad2deg(data->ray->ray_angle));
 	}
 }
 
