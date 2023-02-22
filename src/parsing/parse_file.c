@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:52:19 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/02 13:29:55 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:04:21 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static void	parse_the_line(t_data *data, char *line)
 			error_file("Error:\ndifferent element in the map");
 		j += skip_space(&line[j]);
 		check_color(data, i, &line[j]);
-		check_texture(data, &line[j]);
+		//check_texture(data, &line[j]);
+		check_texture(data, j, line);
 	}
 }
 

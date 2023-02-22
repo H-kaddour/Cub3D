@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:38:22 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/19 18:25:32 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:04:52 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,25 @@ static void	rotation_key(t_data *data)
 	}
 }
 
+int	view_up_down_key(t_data *data)
+{
+	if (data->key_mv->view_up)
+	{
+		if (!(data->ray->view_up_down <= (WIN_H / 2) + 100))
+			return (0);
+		else
+			data->ray->view_up_down += 5;
+	}
+	if (data->key_mv->view_down)
+	{
+		if (!(data->ray->view_up_down >= (WIN_H / 2) - 100))
+			return (0);
+		else
+			data->ray->view_up_down -= 5;
+	}
+	return (1);
+}
+
 int	keys(t_data *data)
 {
 	if (data->key_mv->key_left || data->key_mv->key_right)
@@ -151,6 +170,12 @@ int	keys(t_data *data)
 	if (data->key_mv->key_up || data->key_mv->key_down)
 	{
 		if (up_down_key(data))
+			mlx_destroy_image(data->mlx->init, data->mlx->utils->img);
+			einstein_drawing(data);
+	}
+	if (data->key_mv->view_up || data->key_mv->view_down)
+	{
+		if (view_up_down_key(data))
 			mlx_destroy_image(data->mlx->init, data->mlx->utils->img);
 			einstein_drawing(data);
 	}

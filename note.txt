@@ -96,4 +96,5 @@ fix the dispiring rays
 fix when the player face the wall i get so slow
 when u draw the wall start with the ceilling then the wall and the floor
 optimize the code and clean it
+I need to fix the parsing when enter data of texture and color line in parameter func wrong
 

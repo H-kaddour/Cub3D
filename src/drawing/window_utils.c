@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:47:49 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/19 18:09:57 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:35:22 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ int	close_win(t_data *data)
 {
 	printf("Window closed!\n");
 	free_all(data);
+	//to wait for the song process to end
+	//while (1)
+	//{
+	//	if (waitpid(-1,0,0) == -1)
+	//		exit(0);
+	//}
 	exit(0);
 }
 
@@ -72,11 +78,16 @@ int	key_press(int key, t_data *data)
 		data->key_mv->rot_rght = 1;
 	if (key == ROT_LEFT)
 		data->key_mv->rot_lft = 1;
+	if (key == VIEW_UP)
+		data->key_mv->view_up = 1;
+	if (key == VIEW_DOWN)
+		data->key_mv->view_down = 1;
 	if (key == ESC)
 		close_win(data);
 	//keys(data);
 	return (0);
 }
+
 
 int	key_release(int key, t_data *data)
 {
@@ -93,6 +104,10 @@ int	key_release(int key, t_data *data)
 		data->key_mv->rot_rght = 0;
 	if (key == ROT_LEFT)
 		data->key_mv->rot_lft = 0;
+	if (key == VIEW_UP)
+		data->key_mv->view_up = 0;
+	if (key == VIEW_DOWN)
+		data->key_mv->view_down = 0;
 	return (0);
 }
 
@@ -103,12 +118,27 @@ int	drawing_loop(t_data *data)
 	return (0);
 }
 
+void	music(t_data *data)
+{
+	(void)data;
+	int	pid = fork();
+	if (pid < 0)
+		exit(1);
+	if (pid == 0)
+		system("afplay mf.mp3");
+}
+
 void	window_init(t_data *data)
 {
 	data->mlx->init = mlx_init();
 	data->mlx->win = mlx_new_window(data->mlx->init, WIN_W, WIN_H, "Cub3D");
 	init_drawing_data(data);
 	catch_player_pos(data);
+	//put this one int the init
+	data->ray->view_up_down = (WIN_H / 2);
+	get_textures(data);
+	//not now
+	//music(data);
 	einstein_drawing(data);
 	mlx_hook(data->mlx->win, 17, 1L<<0, close_win, data);
 	mlx_hook(data->mlx->win, 2, 0, key_press, data);

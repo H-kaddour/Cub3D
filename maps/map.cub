@@ -1,7 +1,7 @@
-NO      ./textures/psycho.xpm
-SO      ./textures/psycho.xpm
-EA      ./textures/psycho.xpm
-WE      ./textures/psycho.xpm
+NO      ./textures/wall_1.xpm
+SO      ./textures/ok.xpm
+EA      ./textures/wall_1.xpm
+WE      ./textures/wall_1.xpm
 
 
 C       21474836490,194,251

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/19 20:37:19 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:55:32 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,35 @@
 # include <mlx.h>
 # define ELEM "NO SO EA WE F C"
 //# define  "E N W S"
-# define WIN_W 1720
-# define WIN_H 960
-# define SPEED 3.0
+# define WIN_W 1366
+# define WIN_H 768
+# define SPEED 5.0
 # define ROT_SPEED 5.0
 # define FOV 60
-# define SQR_SIZE 50
+//# define SQR_SIZE 50
+# define SQR_SIZE 65
 # define ROT_RIGHT 123
 # define ROT_LEFT 124
 # define RIGHT 2
 # define LEFT 0
 # define UP 13
 # define DOWN 1
+# define VIEW_UP 126
+# define VIEW_DOWN 125
 # define ESC 53
 //# define INT_MAX 2147483647
 # include "../libft/libft.h"
 # include "../gnl/gnl.h"
 # include "draw.h"
 
+int	H_T;
+int	W_T;
+
 typedef struct image_utils t_img;
 
 typedef struct s_coordinate t_coord;
 
-typedef struct s_keys	t_key;
+typedef struct s_keys	t_keys;
 
 typedef struct s_camera	t_cam;
 
@@ -87,7 +93,8 @@ typedef struct s_data
 	char		*n_file;
 	int			fd_map;
 	char		**r_file;
-	t_key		keys;
+	t_img		*texture;
+	//t_key		*keys;
 	p_stat	*ply_stat;
 	t_color	*color;
 	t_map		*map;
@@ -120,7 +127,8 @@ int		color_converter(t_data *data, char **rgb);
 void	parse_map(t_data *data, char **map);
 void	check_map_error(t_data *data);
 void	check_color(t_data *data, int i, char *line);
-void	check_texture(t_data *data, char *line);
+//void	check_texture(t_data *data, char *line);
+void	check_texture(t_data *data, int j, char *line);
 int		add_color_elem(t_data *data, char *line);
 
 /******** Function of drawing **********/
@@ -134,6 +142,8 @@ void	dda(t_data *data, int	loun);
 
 int	did_it_hit_the_wall(t_data *data, double coord1, double coord2);
 void	look_im_3d_now(t_data *data);
+void	get_textures(t_data *data);
+unsigned int	texture_clr(t_data *data, int x);
 
 /******** Function of Keys **********/
 int	keys(t_data *data);

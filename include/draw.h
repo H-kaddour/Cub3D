@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:19:56 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/19 18:34:49 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:30:24 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef	struct	s_keys
 	int	key_left;
 	int	rot_lft;
 	int	rot_rght;
+	int	view_up;
+	int	view_down;
 	int	chk_mlx_loop;
 } t_keys;
 
@@ -71,6 +73,11 @@ typedef struct s_camera
 	double	start_wall;
 	double	end_wall;
 
+	double	view_up_down;
+
+	//this for texture
+	double	offset_x;
+	double	offset_y;
 	//int		sight;
 } t_cam;
 
@@ -78,6 +85,7 @@ typedef struct image_utils
 {
 	void	*img;
 	char	*addr;
+	unsigned int	*addr2;
 	int		bpp;
 	int		size_line;
 	int		endian;

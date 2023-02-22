@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:32:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/19 20:37:08 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:40:34 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,9 @@ void	compare_the_intersects(t_data *data, double angle)
 		y = fabs(data->draw_utils->y - data->ray->y_vertical);
 		data->ray->dist_vert = sqrt((x * x) + (y * y));
 		data->ray->ray_dist = data->ray->dist_vert * cos(angle - data->draw_utils->angle);
+		//this for texture
+		data->ray->offset_x = (int)data->ray->y_vertical % SQR_SIZE;
+		//
 		data->draw_utils->x_next = data->ray->x_vertical;
 		data->draw_utils->y_next = data->ray->y_vertical;
 	}
@@ -190,6 +193,9 @@ void	compare_the_intersects(t_data *data, double angle)
 		x = fabs(data->draw_utils->x - data->ray->x_horizontal);
 		y = fabs(data->draw_utils->y - data->ray->y_horizontal);
 		data->ray->dist_horz = sqrt((x * x) + (y * y));
+		//this for texture
+		data->ray->offset_x = (int)data->ray->x_horizontal % SQR_SIZE;
+		//
 		data->ray->ray_dist = data->ray->dist_horz * cos(angle - data->draw_utils->angle);
 		data->draw_utils->x_next = data->ray->x_horizontal;
 		data->draw_utils->y_next = data->ray->y_horizontal;
@@ -209,6 +215,9 @@ void	compare_the_intersects(t_data *data, double angle)
 		{
 			//printf("horz\n");
 			data->ray->ray_dist = data->ray->dist_horz * cos(angle - data->draw_utils->angle);
+			//this for texture
+			data->ray->offset_x = (int)data->ray->x_horizontal % SQR_SIZE;
+			//
 			data->draw_utils->x_next = data->ray->x_horizontal;
 			data->draw_utils->y_next = data->ray->y_horizontal;
 		}
@@ -216,6 +225,9 @@ void	compare_the_intersects(t_data *data, double angle)
 		{
 			//printf("vert\n");
 			data->ray->ray_dist = data->ray->dist_vert * cos(angle - data->draw_utils->angle);
+			//this for texture
+			data->ray->offset_x = (int)data->ray->y_vertical % SQR_SIZE;
+			//
 			data->draw_utils->x_next = data->ray->x_vertical;
 			data->draw_utils->y_next = data->ray->y_vertical;
 		}
