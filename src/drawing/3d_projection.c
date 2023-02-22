@@ -6,31 +6,30 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:17:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/21 18:41:37 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:56:36 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 unsigned int	get_color\
-	(t_data *data, double y, double wall_h,int h_win,double x_offset_t,double txt_width,double txt_height)
+	(t_data *data, double y, double wall_h,double x_offset_t, int i)
 {
 	unsigned int	color;
 	int				y_offset;
 	int				x_offset;
 
 
-	(void)h_win;
 	//y_offset = y + (wall_h / 2) - (h_win / 2);
 	y_offset = y + (wall_h / 2) - data->ray->view_up_down;
 	//y_offset = fabs(y + (wall_h / 2) - (h_win - data->ray->view_up_down / 2));
-	x_offset = (x_offset_t / SQR_SIZE) * txt_width;
-	y_offset = ((y_offset) * ((double)txt_height / wall_h));
-	color = data->texture->addr2[(int)((y_offset * txt_height) + x_offset)];
+	x_offset = (x_offset_t / SQR_SIZE) * data->texture[i].w;
+	y_offset = ((y_offset) * ((double)data->texture[i].h / wall_h));
+	color = data->texture[i].texture[(int)((y_offset * data->texture[i].h) + x_offset)];
 	return ((unsigned int)color);
 }
 
-void	look_im_3d_now(t_data *data)
+void	look_im_3d_now(t_data *data, double angle)
 {
 	int	i;
 
@@ -87,8 +86,56 @@ void	look_im_3d_now(t_data *data)
 			//clr = data->texture->addr2[(int)fabs((W_T * data->ray->offset_y) + x_offset_texture)];
 			//printf("x = %f | y = %f\n", x_offset_texture, data->ray->offset_y);
 
-			clr = get_color(data, data->draw_utils->y1, data->ray->proj_wall, WIN_H, data->ray->offset_x, W_T, H_T);
-			//clr = 0xf00291;
+			//clr = get_color(data, data->draw_utils->y1, data->ray->proj_wall, data->ray->offset_x);
+			//if (data->ray->chk_if_horz && (convert_rad2deg(angle) >= 180 && convert_rad2deg(angle) <= 360))
+			//	clr = 0xff0000;
+			//else if (data->ray->chk_if_horz && (convert_rad2deg(angle) >= 0 && convert_rad2deg(angle) < 180))
+			//	clr = 0xff0890;
+			//else if (data->ray->chk_if_vert && (convert_rad2deg(angle) >= 180 && convert_rad2deg(angle) <= 360))
+			//	clr = 0x00ff00;
+			//else if (data->ray->chk_if_vert && (convert_rad2deg(angle) >= 0 && convert_rad2deg(angle) < 180))
+			//	clr = 0xf00291;
+
+			//printf("%d\n", data->ray->chk_if_horz);
+			//printf("%d\n", data->ray->chk_if_vert);
+			//exit(0);
+			if (data->ray->chk_if_horz && ((int)convert_rad2deg(angle) >= 0 && (int)convert_rad2deg(angle) <= 180))
+				clr = get_color(data, data->draw_utils->y1, data->ray->proj_wall, data->ray->offset_x, 0);
+			else if (data->ray->chk_if_horz && (convert_rad2deg(angle) > 90 && convert_rad2deg(angle) <= 360))
+				clr = get_color(data, data->draw_utils->y1, data->ray->proj_wall, data->ray->offset_x, 1);
+			if (data->ray->chk_if_vert && (((int)convert_rad2deg(angle) >= 270 && (int)convert_rad2deg(angle) <= 360) \
+					|| ((int)convert_rad2deg(angle) >= 0 && (int)convert_rad2deg(angle) <= 90)))
+				clr = get_color(data, data->draw_utils->y1, data->ray->proj_wall, data->ray->offset_x, 2);
+			else if (data->ray->chk_if_vert && ((int)convert_rad2deg(angle) > 90 && (int)convert_rad2deg(angle) < 270))
+				clr = get_color(data, data->draw_utils->y1, data->ray->proj_wall, data->ray->offset_x, 3);
+
+
+			//else
+			//	clr = 0xffffff;
+			// if (data->ray->chk_if_vert && \
+			//	((data->draw_utils->angle >= (3 * M_PI / 2) && data->draw_utils->angle <= (2 * M_PI)) || (data->draw_utils->angle >= 0 && data->draw_utils->angle <= (M_PI / 2))))
+			//	clr = get_color(data, data->draw_utils->y1, data->ray->proj_wall, data->ray->offset_x, 2);
+			// if (data->ray->chk_if_vert && (data->draw_utils->angle >= 2 /M_PI && data->draw_utils->angle <= (3 * M_PI / 2)))
+			//	clr = get_color(data, data->draw_utils->y1, data->ray->proj_wall, data->ray->offset_x, 3);
+
+			//if (data->ray->chk_if_horz && is_up(data))
+			//	clr = 0x900d00;
+			//else if (data->ray->chk_if_vert && is_up(data))
+			//	clr = 0xff0890;
+			//else if (data->ray->chk_if_horz && is_down(data))
+			//	clr = 0xa090d;
+			//else if (data->ray->chk_if_vert && is_down(data))
+			//	clr = 0xd0f291;
+
+			//else if (is_right(data))
+			//	clr = 0x00ff00;
+			//else if (is_left(data))
+			//	clr = 0xf00291;
+
+			(void)angle;
+
+
+
 			//printf("x %d, y %d\n", data->ray->offset_x, data->ray->offset_y);
 			//clr = data->texture->addr[(int)data->ray->offset_x * SQR_SIZE + (int)( (i - data->ray->start_wall))]; 
 			//* (data->ray->proj_wall / SQR_SIZE))];

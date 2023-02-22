@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/21 17:55:32 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/22 15:10:11 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define SPEED 5.0
 # define ROT_SPEED 5.0
 # define FOV 60
-//# define SQR_SIZE 50
-# define SQR_SIZE 65
+# define SQR_SIZE 50
+//# define SQR_SIZE 64
 # define ROT_RIGHT 123
 # define ROT_LEFT 124
 # define RIGHT 2
@@ -141,7 +141,7 @@ void	draw_rays(t_data *data);
 void	dda(t_data *data, int	loun);
 
 int	did_it_hit_the_wall(t_data *data, double coord1, double coord2);
-void	look_im_3d_now(t_data *data);
+void	look_im_3d_now(t_data *data, double angle);
 void	get_textures(t_data *data);
 unsigned int	texture_clr(t_data *data, int x);
 

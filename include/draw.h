@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:19:56 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/21 14:30:24 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:27:19 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,10 @@ typedef struct s_camera
 typedef struct image_utils
 {
 	void	*img;
+	unsigned int	*texture;
 	char	*addr;
-	unsigned int	*addr2;
+	int		h;
+	int		w;
 	int		bpp;
 	int		size_line;
 	int		endian;

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:32:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/20 19:40:34 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:41:57 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	get_horizontal_intersect(t_data *data, double angle, double angle_2)
 		if (data->ray->x_horizontal < 0 || floor(data->ray->x_horizontal / SQR_SIZE) > data->map->width -1 \
 				|| data->ray->y_horizontal < 0 || floor(data->ray->y_horizontal / SQR_SIZE) > data->map->height -1)
 		{
-			data->ray->chk_if_horz = 1;
+			data->ray->chk_if_vert = 1;
 			return ;
 		}
 		if (did_it_hit_the_wall(data, data->ray->x_horizontal, data->ray->y_horizontal + round(SQR_SIZE / 10)) && \
@@ -118,7 +118,7 @@ void	get_horizontal_intersect(t_data *data, double angle, double angle_2)
 				if (data->ray->x_horizontal < 0 || floor(data->ray->x_horizontal / SQR_SIZE) > data->map->width -1 \
 						|| data->ray->y_horizontal < 0 || floor(data->ray->y_horizontal / SQR_SIZE) > data->map->height -1)
 				{
-					data->ray->chk_if_horz = 1;
+					data->ray->chk_if_vert = 1;
 					break ;
 				}
 				if (!did_it_hit_the_wall(data, data->ray->x_horizontal, data->ray->y_horizontal + round(SQR_SIZE / 10)) || \
@@ -128,7 +128,7 @@ void	get_horizontal_intersect(t_data *data, double angle, double angle_2)
 		}
 	}
 	else
-		data->ray->chk_if_horz = 1;
+		data->ray->chk_if_vert = 1;
 }
 
 void	get_vertical_intersect(t_data *data, double angle, double angle_2)
@@ -142,7 +142,7 @@ void	get_vertical_intersect(t_data *data, double angle, double angle_2)
 		if (data->ray->x_vertical < 0 || floor(data->ray->x_vertical / SQR_SIZE) > data->map->width -1 \
 				|| data->ray->y_vertical < 0 || floor(data->ray->y_vertical / SQR_SIZE) > data->map->height -1)
 		{
-			data->ray->chk_if_vert = 1;
+			data->ray->chk_if_horz = 1;
 			return ;
 		}
 		if (did_it_hit_the_wall(data, data->ray->x_vertical + round(SQR_SIZE / 10), data->ray->y_vertical) && \
@@ -155,7 +155,7 @@ void	get_vertical_intersect(t_data *data, double angle, double angle_2)
 				if (data->ray->x_vertical < 0 || floor(data->ray->x_vertical /SQR_SIZE) > data->map->width -1 \
 						|| data->ray->y_vertical < 0 || floor(data->ray->y_vertical / SQR_SIZE) > data->map->height -1)
 				{
-					data->ray->chk_if_vert = 1;
+					data->ray->chk_if_horz = 1;
 					break ;
 				}
 				if (!did_it_hit_the_wall(data, data->ray->x_vertical + round(SQR_SIZE / 10), data->ray->y_vertical) || \
@@ -165,7 +165,7 @@ void	get_vertical_intersect(t_data *data, double angle, double angle_2)
 		}
 	}
 	else
-		data->ray->chk_if_vert = 1;
+		data->ray->chk_if_horz = 1;
 }
 
 void	compare_the_intersects(t_data *data, double angle)
@@ -174,7 +174,7 @@ void	compare_the_intersects(t_data *data, double angle)
 	double y;
 
 	(void)angle;
-	if (data->ray->chk_if_horz)
+	if (data->ray->chk_if_vert)
 	{
 		//for vertical
 		x = fabs(data->draw_utils->x - data->ray->x_vertical);
@@ -187,7 +187,7 @@ void	compare_the_intersects(t_data *data, double angle)
 		data->draw_utils->x_next = data->ray->x_vertical;
 		data->draw_utils->y_next = data->ray->y_vertical;
 	}
-	else if (data->ray->chk_if_vert)
+	else if (data->ray->chk_if_horz)
 	{
 		//for horizontal
 		x = fabs(data->draw_utils->x - data->ray->x_horizontal);
@@ -220,6 +220,7 @@ void	compare_the_intersects(t_data *data, double angle)
 			//
 			data->draw_utils->x_next = data->ray->x_horizontal;
 			data->draw_utils->y_next = data->ray->y_horizontal;
+			data->ray->chk_if_horz = 1;
 		}
 		else
 		{
@@ -230,6 +231,7 @@ void	compare_the_intersects(t_data *data, double angle)
 			//
 			data->draw_utils->x_next = data->ray->x_vertical;
 			data->draw_utils->y_next = data->ray->y_vertical;
+			data->ray->chk_if_vert = 1;
 		}
 	}
 }
@@ -272,6 +274,7 @@ void	draw_rays(t_data *data)
 	//int	clr = 0xff0000;
 	//printf("ply_x = %f | ply_y = %f\n", data->draw_utils->ply_x_pos, data->draw_utils->ply_y_pos);
 	//while (i <= 10)
+	printf("ray_angle = %f\n", convert_rad2deg(data->ray->ray_angle));
 	while (i <= WIN_W)
 	{
 		data->ray->chk_if_horz = 0;
@@ -282,7 +285,7 @@ void	draw_rays(t_data *data)
 		//printf("loop = %d\n", i);
 		//printf("vertical   | x = %f  |  y = %f\n", data->ray->x_horizontal, data->ray->y_horizontal);
 		//printf("horizontal | x = %f  |  y = %f\n", data->ray->x_vertical, data->ray->y_vertical);
-		look_im_3d_now(data);
+		look_im_3d_now(data, angle);
 		//if (!i || i == WIN_W)
 			//dda(data, clr);
 			//return ;

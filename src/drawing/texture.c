@@ -6,30 +6,33 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 20:08:06 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/20 22:57:05 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/22 13:54:23 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-//int	H_T;
-//int	W_T;
-//key UP and DOWN
 void	get_textures(t_data *data)
 {
-	int	h;
-	int	w;
-
-	//data->texture->img = mlx_new_image(data->mlx->init, 500, 500);
-	//mlx_xpm
-	data->texture->img = mlx_xpm_file_to_image(data->mlx->init, data->ply_stat->south, &w, &h);
-	data->texture->addr2 = (unsigned int *)mlx_get_data_addr(data->texture->img, &data->texture->bpp, \
+	data->texture[0].img = mlx_xpm_file_to_image(data->mlx->init, \
+			data->ply_stat->east, &data->texture[0].w, &data->texture[0].h);
+	data->texture[0].texture = (unsigned int *)mlx_get_data_addr(data->texture[0].img, &data->texture->bpp, \
 			&data->texture->size_line, &data->texture->endian);
-	H_T = h;
-	W_T = w;
-	//mlx_put_image_to_window(data->mlx->init, data->mlx->win, data->texture->img, 0, 0);
-	//printf("color = %s\n", data->texture->img);
-	//exit(0);
+
+	data->texture[1].img = mlx_xpm_file_to_image(data->mlx->init, \
+			data->ply_stat->north, &data->texture[1].w, &data->texture[1].h);
+	data->texture[1].texture = (unsigned int *)mlx_get_data_addr(data->texture[1].img, &data->texture->bpp, \
+			&data->texture->size_line, &data->texture->endian);
+
+	data->texture[2].img = mlx_xpm_file_to_image(data->mlx->init, \
+			data->ply_stat->west, &data->texture[2].w, &data->texture[2].h);
+	data->texture[2].texture = (unsigned int *)mlx_get_data_addr(data->texture[2].img, &data->texture->bpp, \
+			&data->texture->size_line, &data->texture->endian);
+
+	data->texture[3].img = mlx_xpm_file_to_image(data->mlx->init, \
+			data->ply_stat->south, &data->texture[3].w, &data->texture[3].h);
+	data->texture[3].texture = (unsigned int *)mlx_get_data_addr(data->texture[3].img, &data->texture->bpp, \
+			&data->texture->size_line, &data->texture->endian);
 }
 
 unsigned int	texture_clr(t_data *data, int x)

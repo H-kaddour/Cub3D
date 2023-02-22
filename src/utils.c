@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/20 12:16:47 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:17:33 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_data(t_data *data, char *file)
 	data->n_file = file;
 	data->g_collect = ft_calloc(1, sizeof(t_free));
 	//just test
-	data->texture = allocation(data, 1, sizeof(t_img));
+	data->texture = allocation(data, 4, sizeof(t_img));
 	data->ply_stat = allocation(data, 1, sizeof(p_stat));
 	data->color = allocation(data, 1, sizeof(t_color));
 	data->map = allocation(data, 1, sizeof(t_map));

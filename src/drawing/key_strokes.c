@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:38:22 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/20 17:04:52 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:39:22 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,8 @@ static void	rotation_key(t_data *data)
 	{
 		if ((int)round(convert_rad2deg(data->draw_utils->angle)) == 0)
 			data->draw_utils->angle = (2 * M_PI);
-		data->draw_utils->angle -= convert_deg2rad(ROT_SPEED);
+		data->draw_utils->angle = fabs(data->draw_utils->angle - convert_deg2rad(ROT_SPEED));
+		//data->draw_utils->angle -= convert_deg2rad(ROT_SPEED);
 		//this one for the ray i will get back to it to optimize it
 		if ((int)round(convert_rad2deg(data->ray->ray_angle)) == 0)
 			data->ray->ray_angle = (2 * M_PI);

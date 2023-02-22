@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:47:49 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/20 17:35:22 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:40:08 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	init_drawing_data(t_data *data)
 	}
 	//ray angle 0 x go to inf
 	//ray in 180 also get fucked
-	data->draw_utils->angle = convert_deg2rad(80);
+	//data->draw_utils->angle = convert_deg2rad(80);
 	//data->draw_utils->angle = convert_deg2rad(0 + 30);
 	//data->draw_utils->angle = convert_deg2rad(0);
 	//this one init where the angle of the rays will be start
@@ -84,7 +84,7 @@ int	key_press(int key, t_data *data)
 		data->key_mv->view_down = 1;
 	if (key == ESC)
 		close_win(data);
-	//keys(data);
+	keys(data);
 	return (0);
 }
 
@@ -143,6 +143,6 @@ void	window_init(t_data *data)
 	mlx_hook(data->mlx->win, 17, 1L<<0, close_win, data);
 	mlx_hook(data->mlx->win, 2, 0, key_press, data);
 	mlx_hook(data->mlx->win, 3, 0, key_release, data);
-	mlx_loop_hook(data->mlx->init, drawing_loop, data);
+	//mlx_loop_hook(data->mlx->init, drawing_loop, data);
 	mlx_loop(data->mlx->init);
 }
