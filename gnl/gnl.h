@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 22:15:03 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/12/06 12:59:29 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:23:54 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-typedef	struct s_data t_data;
+typedef struct s_data	t_data;
 
 typedef struct grab_line
 {
 	char		*buff;
 	char		*tmp;
 	char		*line;
-	t_data	*data;
+	t_data		*data;
 }	t_gnl;
 
 char	*grab_line(t_data *data, int fd);

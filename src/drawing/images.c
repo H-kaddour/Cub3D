@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:20:46 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/02 14:27:19 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:51:07 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	make_and_init_image(t_data *data)
 
 void	mlx_put_pixel_to_img(t_data *data, int x, int y, int clr)
 {
-	char    *dst;
+	char	*dst;
 
 	if (WIN_W > x && WIN_H > y)
-  {
+	{
 		dst = data->mlx->utils->addr + (y * data->mlx->utils->size_line + \
 				x * (data->mlx->utils->bpp / 8));
 		*(unsigned int *)dst = clr;
-  }
+	}
 }

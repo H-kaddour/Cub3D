@@ -56,6 +56,11 @@ SO      ./textures/doom.xpm
 EA      ./textures/hkaddour.xpm
 WE      ./textures/yaskour.xpm
 
+111111111111
+100000000001
+100000S00001
+100000000001
+111111111111
         1111111111111111111111111
         1000100001100000000000001
         1011011001110001101010001
@@ -90,6 +95,8 @@ WE      ./textures/yaskour.xpm
 1S1
 111
 
+C       21474836490,194,251
+
 Fix :
 fix the upstair thing in parsing
 fix the dispiring rays
@@ -97,4 +104,5 @@ fix when the player face the wall i get so slow
 when u draw the wall start with the ceilling then the wall and the floor
 optimize the code and clean it
 I need to fix the parsing when enter data of texture and color line in parameter func wrong
+***FIX S W when you enter in the wall it gives the floor color
 

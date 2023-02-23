@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 22:46:53 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/13 21:40:17 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:29:26 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static int	convert_hex_to_dec(char *str)
 	return (rslt);
 }
 
-static char	*convert_to_hex(t_data *data, int	clr)
+static char	*convert_to_hex(t_data *data, int clr)
 {
-	int	i;
-	int	hld;
+	int		i;
+	int		hld;
 	char	*rslt;
 
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:55:15 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/02 13:36:01 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:27:56 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	check_if_line_exist(char *line)
 	return (1);
 }
 
-static void	check_if_other_line_exist(int	i, char **map)
+static void	check_if_other_line_exist(int i, char **map)
 {
 	while (map[i])
 	{
@@ -62,7 +62,8 @@ static void	allocate_map(t_data *data, char **map)
 	data->map->map = allocation(data, data->map->height + 1, sizeof(char *));
 	while (i < data->map->height)
 	{
-		data->map->map[i] = allocation(data, data->map->width + 1, sizeof(char));
+		data->map->map[i] = \
+			allocation(data, data->map->width + 1, sizeof(char));
 		cpy_map(data, data->map->map[i], map[i]);
 		i++;
 	}

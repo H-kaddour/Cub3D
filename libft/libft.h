@@ -6,7 +6,7 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 12:31:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/30 15:04:22 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:24:59 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include "../include/cub3d.h"
 
-typedef	struct	s_data t_data;
+typedef struct s_data	t_data;
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);

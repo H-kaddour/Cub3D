@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 12:02:06 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/20 13:07:14 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:19:10 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	check_color(t_data *data, int i, char *line)
 	}
 }
 
-//void	check_texture(t_data *data, char *line)
 void	check_texture(t_data *data, int j, char *line)
 {
 	if (!ft_strncmp(line, "NO", 2))
@@ -64,23 +63,21 @@ int	add_color_elem(t_data *data, char *line)
 {
 	int		i;
 	int		j;
-	int		nbr;
 	char	**sp;
 
 	i = 0;
 	sp = ft_split(data, line, ',');
+	check_clr_error(line);
 	while (sp[i])
 	{
 		j = 0;
-		//handle + sign too only not - sgin
 		while (sp[i][j])
 		{
 			if (!(sp[i][j] >= '0' && sp[i][j] <= '9'))
 				error_file("Error:\n in color");
 			j++;
 		}
-		nbr = ft_atoi(sp[i]);
-		if (!(nbr >= 0 && nbr <= 255))
+		if (check_clr_range(sp[i]))
 			error_file("Error:\n invalid color");
 		i++;
 	}
