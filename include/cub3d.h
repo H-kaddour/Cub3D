@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/23 17:07:44 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/25 19:58:00 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 # include <strings.h>
 # include <unistd.h>
 # include <math.h>
-# include <mlx.h>
+# include "../minilibx/mlx.h"
 # define ELEM "NO SO EA WE F C"
 # define WIN_W 1366
 # define WIN_H 768
-# define SPEED 4.0
+# define SPEED 100.0
 # define ROT_SPEED 5.0
 # define FOV 60
-# define SQR_SIZE 50
+# define SQR_SIZE 500
 # define ROT_RIGHT 123
 # define ROT_LEFT 124
 # define RIGHT 2
@@ -33,6 +33,7 @@
 # define DOWN 1
 # define VIEW_UP 126
 # define VIEW_DOWN 125
+# define SPRITE 49
 # define ESC 53
 # include "../libft/libft.h"
 # include "../gnl/gnl.h"
@@ -84,7 +85,9 @@ typedef struct s_data
 	char		*n_file;
 	int			fd_map;
 	char		**r_file;
+	int			sp_mot;
 	t_img		*texture;
+	t_img		*sprite;
 	t_p_stat	*ply_stat;
 	t_color		*color;
 	t_map		*map;
@@ -122,6 +125,12 @@ void	check_clr_error(char *line);
 int		check_clr_range(char *nbr);
 
 /******** Function of drawing **********/
+
+//add it with the bonus
+void	mini_map_draw(t_data *data);
+void	dda(t_data *data, int loun);
+void	sprite_init(t_data *data);
+
 void	window_init(t_data *data);
 int		close_win(t_data *data);
 int		did_it_hit_the_wall(t_data *data, double x, double y, int chk);
@@ -152,6 +161,7 @@ int		key_press(int key, t_data *data);
 int		key_release(int key, t_data *data);
 int		view_up_down_key(t_data *data);
 void	rotation_key(t_data *data);
+void	sprite_motion(t_data *data);
 
 /******** Function of Math **********/
 double	convert_deg2rad(double degree);

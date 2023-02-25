@@ -1,14 +1,11 @@
 C	150,150,255
-F	100,000001,100
+F	100,1,100
 
 
-
-
-
-NO        ./textures/pussy.xpm
-SO          ./textures/doom.xpm
-EA        ./textures/hkaddour.xpm
-WE ./textures/yaskour.xpm
+NO ./textures/putin.xpm
+SO ./textures/putin.xpm
+EA ./textures/putin.xpm
+WE ./textures/putin.xpm
 
 
 
@@ -29,7 +26,7 @@ WE ./textures/yaskour.xpm
         111111111111111001000000000000010010001
                       1000000000000000000010001
                       1000000000000000000010001
-                      10000000S000000000000001
+                      10000000W000000000000001
                       1000000000000000000010001
                       1000000000000000000010001
                       1001000000000000010010001

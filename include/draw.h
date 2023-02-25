@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:19:56 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/23 15:18:54 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/25 19:43:42 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ typedef struct s_coordinate
 {
 	double	x;
 	double	y;
+	double	x_next;
+	double	y_next;
 	double	angle;
 	double	ply_x_pos;
 	double	ply_y_pos;
@@ -33,6 +35,7 @@ typedef struct s_keys
 	int	rot_rght;
 	int	view_up;
 	int	view_down;
+	int	sprite;
 	int	chk_mlx_loop;
 }	t_keys;
 

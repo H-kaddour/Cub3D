@@ -106,3 +106,4 @@ optimize the code and clean it
 I need to fix the parsing when enter data of texture and color line in parameter func wrong
 ***FIX S W when you enter in the wall it gives the floor color
 
+FIX now parsing 0001 color and include file of bonus and makefile and sprite and norminette check sprite file in parsing
