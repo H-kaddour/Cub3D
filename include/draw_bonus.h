@@ -6,13 +6,27 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 11:28:25 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 15:04:51 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 15:48:36 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DRAW_BONUS_H
 # define DRAW_BONUS_H
 # include "cub3d_bonus.h"
+
+typedef struct s_mini_map
+{
+	int	x;
+	int	y;
+	int	start_x;
+	int	start_y;
+	int	end_x;
+	int	end_y;
+	int	ply_x;
+	int	ply_y;
+	int	hld_x;
+	int	hld_y;
+} t_mini_map;
 
 typedef struct s_coordinate
 {

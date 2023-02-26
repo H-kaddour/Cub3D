@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 11:26:19 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 15:04:32 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 15:12:58 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # include "draw_bonus.h"
 
 typedef struct image_utils	t_img;
+typedef struct s_mini_map	t_mini_map;
 typedef struct s_coordinate	t_coord;
 typedef struct s_keys		t_keys;
 typedef struct s_camera		t_cam;
@@ -86,6 +87,7 @@ typedef struct s_data
 	int			fd_map;
 	char		**r_file;
 	int			sp_mot;
+	t_mini_map	*mini;
 	t_img		*texture;
 	t_img		*sprite;
 	t_p_stat	*ply_stat;

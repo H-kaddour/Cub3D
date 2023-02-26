@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 20:08:06 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 14:51:30 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 15:15:46 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	get_textures(t_data *data)
 void	sprite_init(t_data *data)
 {
 	data->sprite[0].img = mlx_xpm_file_to_image(data->mlx->init, \
-			"./sprites/p.xpm", &data->sprite[0].w, &data->sprite[0].h);
+			"./sprites/gun_2.xpm", &data->sprite[0].w, &data->sprite[0].h);
 	if (!data->sprite[0].img)
 		error_file("Error\nin img");
 	data->sprite[1].img = mlx_xpm_file_to_image(data->mlx->init, \
