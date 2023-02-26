@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: amrakibe <amrakibe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 12:38:12 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:03:15 by amrakibe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,66 +97,66 @@ typedef struct s_data
 }	t_data;
 
 /******** Function of main **********/
-void	init_data(t_data *data, char *file);
-void	*allocation(t_data *data, int count, int size);
-char	*add_dup(t_data *data, char *s);
+void			init_data(t_data *data, char *file);
+void			*allocation(t_data *data, int count, int size);
+char			*add_dup(t_data *data, char *s);
 
 /******** Function of error **********/
-void	error_alloc(void);
-void	error_file(char *msg);
+void			error_alloc(void);
+void			error_file(char *msg);
 
 /******** Function of free **********/
-void	garbage_collector(t_data *data, void *addr);
-void	free_all(t_data *data);
-void	split_collect_addr(t_data *data, char **sp);
+void			garbage_collector(t_data *data, void *addr);
+void			free_all(t_data *data);
+void			split_collect_addr(t_data *data, char **sp);
 
 /******** Function of parsing **********/
-void	read_file(t_data *data);
-void	parse_file(t_data *data);
-char	*add_texture_elem(t_data *data, char *file);
-int		color_converter(t_data *data, char **rgb);
-void	parse_map(t_data *data, char **map);
-void	check_map_error(t_data *data);
-void	check_color(t_data *data, int i, char *line);
-void	check_texture(t_data *data, int j, char *line);
-int		add_color_elem(t_data *data, char *line);
-void	check_clr_error(char *line);
-int		check_clr_range(char *nbr);
+void			read_file(t_data *data);
+void			parse_file(t_data *data);
+char			*add_texture_elem(t_data *data, char *file);
+int				color_converter(t_data *data, char **rgb);
+void			parse_map(t_data *data, char **map);
+void			check_map_error(t_data *data);
+void			check_color(t_data *data, int i, char *line);
+void			check_texture(t_data *data, int j, char *line);
+int				add_color_elem(t_data *data, char *line);
+void			check_clr_error(char *line);
+int				check_clr_range(char *nbr);
 
 /******** Function of drawing **********/
-void	window_init(t_data *data);
-int		close_win(t_data *data);
-int		did_it_hit_the_wall(t_data *data, double x, double y, int chk);
-void	draw(t_data *data);
-void	einstein_drawing(t_data *data);
-void	catch_player_pos(t_data *data);
-void	make_and_init_image(t_data *data);
-void	mlx_put_pixel_to_img(t_data *data, int x, int y, int clr);
-void	draw_rays(t_data *data);
-void	look_im_3d_now(t_data *data);
-void	get_textures(t_data *data);
-void	compare_the_intersects(t_data *data, double angle);
-void	get_first_horizontal_intersect(t_data *data, double angle);
-void	get_next_horizontal_intersect(t_data *data, double angle);
-void	get_first_vertical_intersect(t_data *data, double angle);
-void	get_next_vertical_intersect(t_data *data, double angle);
+void			window_init(t_data *data);
+int				close_win(t_data *data);
+int				did_it_hit_the_wall(t_data *data, double x, double y, int chk);
+void			draw(t_data *data);
+void			einstein_drawing(t_data *data);
+void			catch_player_pos(t_data *data);
+void			make_and_init_image(t_data *data);
+void			mlx_put_pixel_to_img(t_data *data, int x, int y, int clr);
+void			draw_rays(t_data *data);
+void			look_im_3d_now(t_data *data);
+void			get_textures(t_data *data);
+void			compare_the_intersects(t_data *data, double angle);
+void			get_first_horizontal_intersect(t_data *data, double angle);
+void			get_next_horizontal_intersect(t_data *data, double angle);
+void			get_first_vertical_intersect(t_data *data, double angle);
+void			get_next_vertical_intersect(t_data *data, double angle);
 unsigned int	texture_clr(t_data *data, double y, int i);
 
 /******** Function of drawing sight **********/
-int		is_view_up(t_data *data);
-int		is_view_right(t_data *data);
-int		is_view_down(t_data *data);
-int		is_view_left(t_data *data);
+int				is_view_up(t_data *data);
+int				is_view_right(t_data *data);
+int				is_view_down(t_data *data);
+int				is_view_left(t_data *data);
 
 /******** Function of Keys **********/
-int		keys(t_data *data);
-int		key_press(int key, t_data *data);
-int		key_release(int key, t_data *data);
-int		view_up_down_key(t_data *data);
-void	rotation_key(t_data *data);
+int				keys(t_data *data);
+int				key_press(int key, t_data *data);
+int				key_release(int key, t_data *data);
+int				view_up_down_key(t_data *data);
+void			rotation_key(t_data *data);
 
 /******** Function of Math **********/
-double	convert_deg2rad(double degree);
-double	convert_rad2deg(double radians);
+double			deg_to_rad(double degree);
+double			rad_to_deg(double radians);
 
 #endif

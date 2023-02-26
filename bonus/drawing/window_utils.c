@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: amrakibe <amrakibe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:47:49 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 12:33:39 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:34:55 by amrakibe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static void	init_drawing_data(t_data *data)
 		data->draw_utils->angle = M_PI;
 	else if (data->map->player == 'S')
 		data->draw_utils->angle = 3 * M_PI / 2;
-	if ((int)round(convert_rad2deg(data->draw_utils->angle)) == 0)
-		data->ray->ray_angle = convert_deg2rad(360 - (FOV / 2));
-	else if ((int)round(convert_rad2deg(data->draw_utils->angle)) < 30)
-		data->ray->ray_angle = convert_deg2rad(360 - \
-			(fabs(convert_rad2deg(data->draw_utils->angle) - (FOV / 2))));
+	if ((int)round(rad_to_deg(data->draw_utils->angle)) == 0)
+		data->ray->ray_angle = deg_to_rad(360 - (FOV / 2));
+	else if ((int)round(rad_to_deg(data->draw_utils->angle)) < 30)
+		data->ray->ray_angle = deg_to_rad(360 - \
+			(fabs(rad_to_deg(data->draw_utils->angle) - (FOV / 2))));
 	else
 		data->ray->ray_angle = \
-			data->draw_utils->angle - convert_deg2rad(FOV / 2);
+			data->draw_utils->angle - deg_to_rad(FOV / 2);
 	data->ray->view_up_down = (WIN_H / 2);
 	data->sp_mot = 3;
 }

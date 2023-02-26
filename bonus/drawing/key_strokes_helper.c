@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_strokes_helper.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: amrakibe <amrakibe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:38:09 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 14:32:03 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:34:45 by amrakibe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,23 +81,23 @@ void	rotation_key(t_data *data)
 {
 	if (data->key_mv->rot_rght)
 	{
-		if ((int)round(convert_rad2deg(data->draw_utils->angle)) == 0)
+		if ((int)round(rad_to_deg(data->draw_utils->angle)) == 0)
 			data->draw_utils->angle = (2 * M_PI);
 		data->draw_utils->angle = \
-			fabs(data->draw_utils->angle - convert_deg2rad(ROT_SPEED));
-		if ((int)round(convert_rad2deg(data->ray->ray_angle)) == 0)
+			fabs(data->draw_utils->angle - deg_to_rad(ROT_SPEED));
+		if ((int)round(rad_to_deg(data->ray->ray_angle)) == 0)
 			data->ray->ray_angle = (2 * M_PI);
 		data->ray->ray_angle = \
-			fabs(data->ray->ray_angle - convert_deg2rad(ROT_SPEED));
+			fabs(data->ray->ray_angle - deg_to_rad(ROT_SPEED));
 	}
 	if (data->key_mv->rot_lft)
 	{
-		if ((int)round(convert_rad2deg(data->draw_utils->angle)) == 360)
+		if ((int)round(rad_to_deg(data->draw_utils->angle)) == 360)
 			data->draw_utils->angle = 0;
-		data->draw_utils->angle += convert_deg2rad(ROT_SPEED);
-		if ((int)round(convert_rad2deg(data->ray->ray_angle)) == 360)
+		data->draw_utils->angle += deg_to_rad(ROT_SPEED);
+		if ((int)round(rad_to_deg(data->ray->ray_angle)) == 360)
 			data->ray->ray_angle = 0;
-		data->ray->ray_angle += convert_deg2rad(ROT_SPEED);
+		data->ray->ray_angle += deg_to_rad(ROT_SPEED);
 	}
 	draw(data);
 }

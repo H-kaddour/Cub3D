@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3d_projection.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: amrakibe <amrakibe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:17:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 12:32:15 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:33:38 by amrakibe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	color_piker(t_data *data)
 
 void	look_im_3d_now(t_data *data)
 {
-	data->ray->dist_ply_proj = (WIN_W / 2) / tan(convert_deg2rad(FOV / 3) * 2);
+	data->ray->dist_ply_proj = (WIN_W / 2) / tan(deg_to_rad(FOV / 3) * 2);
 	data->ray->proj_wall = \
 		fabs((SQR_SIZE / data->ray->ray_dist) * data->ray->dist_ply_proj);
 	data->ray->start_wall = \

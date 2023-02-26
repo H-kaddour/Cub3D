@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: amrakibe <amrakibe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 11:28:25 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 15:48:36 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:04:25 by amrakibe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_mini_map
 	int	ply_y;
 	int	hld_x;
 	int	hld_y;
-} t_mini_map;
+}	t_mini_map;
 
 typedef struct s_coordinate
 {

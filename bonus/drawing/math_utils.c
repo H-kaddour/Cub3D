@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   math_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: amrakibe <amrakibe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:51:11 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 12:32:44 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:34:48 by amrakibe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d_bonus.h"
 
-double	convert_rad2deg(double radians)
+double	rad_to_deg(double radians)
 {
 	return (radians * (180.0 / M_PI));
 }
 
-double	convert_deg2rad(double degree)
+double	deg_to_rad(double degree)
 {
 	return (degree * (M_PI / 180.0));
 }
