@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:03:26 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:28:21 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:33:19 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 static void	take_vertical_only(t_data *data, double angle)
 {

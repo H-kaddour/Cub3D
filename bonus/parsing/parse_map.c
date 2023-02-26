@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:58:41 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:26:39 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:30:48 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 static void	check_coordinate_begin_end(t_data *data)
 {

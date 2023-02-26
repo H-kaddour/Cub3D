@@ -6,7 +6,7 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:53:30 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/10/16 10:54:17 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:58:41 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -53,7 +53,7 @@ char	*ft_itoa(int n)
 		return (ft_int_min());
 	ft_alloc(n, i, &ptr);
 	if (!ptr)
-		error_alloc();
+		ft_error();
 	if (n < 0)
 	{
 		i++;

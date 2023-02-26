@@ -6,15 +6,14 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:38:09 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/25 19:25:02 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:32:03 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 int	key_press(int key, t_data *data)
 {
-	data->key_mv->chk_mlx_loop = 1;
 	if (key == UP)
 		data->key_mv->key_up = 1;
 	if (key == DOWN)
@@ -40,7 +39,6 @@ int	key_press(int key, t_data *data)
 
 int	key_release(int key, t_data *data)
 {
-	data->key_mv->chk_mlx_loop = 0;
 	if (key == UP)
 		data->key_mv->key_up = 0;
 	if (key == DOWN)
@@ -106,7 +104,7 @@ void	rotation_key(t_data *data)
 
 void	sprite_motion(t_data *data)
 {
-	static	int	i;
+	static int	i;
 
 	if (i >= 0 && i <= 2)
 		data->sp_mot = 2;

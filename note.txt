@@ -95,6 +95,7 @@ WE      ./textures/yaskour.xpm
 1S1
 111
 
+C       00099,89,133
 C       21474836490,194,251
 
 Fix :
@@ -107,3 +108,4 @@ I need to fix the parsing when enter data of texture and color line in parameter
 ***FIX S W when you enter in the wall it gives the floor color
 
 FIX now parsing 0001 color and include file of bonus and makefile and sprite and norminette check sprite file in parsing
+***protect if img return NULL

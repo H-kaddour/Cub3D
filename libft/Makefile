@@ -6,7 +6,7 @@
 #    By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/04 20:10:00 by hkaddour          #+#    #+#              #
-#    Updated: 2023/02/01 19:12:03 by hkaddour         ###   ########.fr        #
+#    Updated: 2023/02/26 13:04:38 by hkaddour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ SRCS =	ft_atoi.c \
 		ft_strlcpy.c \
 		ft_toupper.c \
 		ft_strcmp.c \
-		ft_strcspn.c
+		ft_strcspn.c \
+		ft_error.c
 
 OBJS = $(SRCS:.c=.o)
 BGreen=\033[1;32m

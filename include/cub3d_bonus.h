@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 21:50:05 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 12:38:12 by hkaddour         ###   ########.fr       */
+/*   Created: 2023/02/26 11:26:19 by hkaddour          #+#    #+#             */
+/*   Updated: 2023/02/26 15:04:32 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 # include <stdio.h>
 # include <stdlib.h>
 # include <strings.h>
@@ -36,8 +36,8 @@
 # define SPRITE 49
 # define ESC 53
 # include "../libft/libft.h"
-# include "../mandatory/gnl/gnl.h"
-# include "draw.h"
+# include "../bonus/gnl_bonus/gnl_bonus.h"
+# include "draw_bonus.h"
 
 typedef struct image_utils	t_img;
 typedef struct s_coordinate	t_coord;
@@ -85,7 +85,9 @@ typedef struct s_data
 	char		*n_file;
 	int			fd_map;
 	char		**r_file;
+	int			sp_mot;
 	t_img		*texture;
+	t_img		*sprite;
 	t_p_stat	*ply_stat;
 	t_color		*color;
 	t_map		*map;
@@ -124,6 +126,9 @@ void	check_clr_error(char *line);
 int		check_clr_range(char *nbr);
 
 /******** Function of drawing **********/
+void	mini_map_draw(t_data *data);
+void	dda(t_data *data, int loun);
+void	sprite_init(t_data *data);
 void	window_init(t_data *data);
 int		close_win(t_data *data);
 int		did_it_hit_the_wall(t_data *data, double x, double y, int chk);
@@ -154,6 +159,7 @@ int		key_press(int key, t_data *data);
 int		key_release(int key, t_data *data);
 int		view_up_down_key(t_data *data);
 void	rotation_key(t_data *data);
+void	sprite_motion(t_data *data);
 
 /******** Function of Math **********/
 double	convert_deg2rad(double degree);

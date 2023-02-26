@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:20:46 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:27:20 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:32:29 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 void	make_and_init_image(t_data *data)
 {

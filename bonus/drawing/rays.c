@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:32:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/25 10:24:00 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:33:13 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 static void	get_horizontal_intersect(t_data *data, double angle)
 {

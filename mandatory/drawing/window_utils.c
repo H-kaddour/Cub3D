@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:47:49 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:31:15 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:42:22 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,6 @@ void	init_drawing_data(t_data *data)
 	data->ray->view_up_down = (WIN_H / 2);
 }
 
-int	drawing_loop(t_data *data)
-{
-	if (data->key_mv->chk_mlx_loop)
-		keys(data);
-	return (0);
-}
-
 void	window_init(t_data *data)
 {
 	data->mlx->init = mlx_init();
@@ -58,6 +51,6 @@ void	window_init(t_data *data)
 	mlx_hook(data->mlx->win, 17, 1L << 0, close_win, data);
 	mlx_hook(data->mlx->win, 2, 0, key_press, data);
 	mlx_hook(data->mlx->win, 3, 0, key_release, data);
-	mlx_loop_hook(data->mlx->init, drawing_loop, data);
+	mlx_loop_hook(data->mlx->init, keys, data);
 	mlx_loop(data->mlx->init);
 }

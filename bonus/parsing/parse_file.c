@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 21:52:19 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:26:34 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 15:02:00 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 static int	skip_space(char *line)
 {
@@ -24,14 +24,28 @@ static int	skip_space(char *line)
 	return (i);
 }
 
+static void	parse_the_line_helper(t_data *data, char **elem, char *line, int i)
+{
+	int	j;
+
+	j = ft_strlen(elem[i]);
+	if (!line[j])
+		error_file("Error:\nin the element");
+	if (line[j] != ' ' && !(line[j] >= 9 && line[j] <= 13))
+		error_file("Error:\ndifferent element in the map");
+	j += skip_space(&line[j]);
+	check_color(data, i, &line[j]);
+	check_texture(data, j, line);
+}
+
 static void	parse_the_line(t_data *data, char *line)
 {
 	int		i;
-	int		j;
 	char	**elem;
 
 	i = 0;
-	elem = ft_split(data, ELEM, ' ');
+	elem = ft_split(ELEM, ' ');
+	split_collect_addr(data, elem);
 	while (elem[i])
 	{
 		if (!ft_strncmp(elem[i], line, ft_strlen(elem[i])))
@@ -41,16 +55,7 @@ static void	parse_the_line(t_data *data, char *line)
 	if (!elem[i])
 		error_file("Error:\ndifferent element in the map");
 	else
-	{
-		j = ft_strlen(elem[i]);
-		if (!line[j])
-			error_file("Error:\nin the element");
-		if (line[j] != ' ' && !(line[j] >= 9 && line[j] <= 13))
-			error_file("Error:\ndifferent element in the map");
-		j += skip_space(&line[j]);
-		check_color(data, i, &line[j]);
-		check_texture(data, j, line);
-	}
+		parse_the_line_helper(data, elem, line, i);
 }
 
 void	parse_file(t_data *data)

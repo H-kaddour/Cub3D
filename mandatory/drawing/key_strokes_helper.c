@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:38:09 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:30:38 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:42:33 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	key_press(int key, t_data *data)
 {
-	data->key_mv->chk_mlx_loop = 1;
 	if (key == UP)
 		data->key_mv->key_up = 1;
 	if (key == DOWN)
@@ -38,7 +37,6 @@ int	key_press(int key, t_data *data)
 
 int	key_release(int key, t_data *data)
 {
-	data->key_mv->chk_mlx_loop = 0;
 	if (key == UP)
 		data->key_mv->key_up = 0;
 	if (key == DOWN)

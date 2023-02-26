@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.h                                             :+:      :+:    :+:   */
+/*   draw_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 11:19:56 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 12:40:45 by hkaddour         ###   ########.fr       */
+/*   Created: 2023/02/26 11:28:25 by hkaddour          #+#    #+#             */
+/*   Updated: 2023/02/26 15:04:51 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DRAW_H
-# define DRAW_H
-# include "cub3d.h"
+#ifndef DRAW_BONUS_H
+# define DRAW_BONUS_H
+# include "cub3d_bonus.h"
 
 typedef struct s_coordinate
 {
 	double	x;
 	double	y;
+	double	x_next;
+	double	y_next;
 	double	angle;
 	double	ply_x_pos;
 	double	ply_y_pos;
@@ -33,6 +35,7 @@ typedef struct s_keys
 	int	rot_rght;
 	int	view_up;
 	int	view_down;
+	int	sprite;
 }	t_keys;
 
 typedef struct s_camera

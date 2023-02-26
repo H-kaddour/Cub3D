@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:17:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:27:08 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:32:15 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 static void	color_piker(t_data *data)
 {

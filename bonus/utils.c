@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:26:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/25 16:24:39 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:30:38 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 void	*allocation(t_data *data, int count, int size)
 {

@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 22:46:53 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:26:28 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:30:59 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 static int	convert_hex_to_dec(char *str)
 {

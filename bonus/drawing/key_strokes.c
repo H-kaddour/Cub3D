@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:38:22 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/25 19:25:35 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:28:40 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 int	check_walls_right_left(t_data *data, int chk)
 {
@@ -97,7 +97,6 @@ static int	up_down_key(t_data *data)
 	}
 	return (0);
 }
-
 
 int	keys(t_data *data)
 {

@@ -6,11 +6,18 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:46:17 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:30:07 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:00:28 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	split_collect_addr(t_data *data, char **sp)
+{
+	garbage_collector(data, sp);
+	while (*sp)
+		garbage_collector(data, *sp++);
+}
 
 void	free_all(t_data *data)
 {

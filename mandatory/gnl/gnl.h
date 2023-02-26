@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handling.c                                   :+:      :+:    :+:   */
+/*   gnl.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 14:35:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/26 12:32:08 by hkaddour         ###   ########.fr       */
+/*   Created: 2022/10/23 22:15:03 by hkaddour          #+#    #+#             */
+/*   Updated: 2023/02/26 13:02:29 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d_bonus.h"
+#ifndef GNL_H
+# define GNL_H
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include "../../include/cub3d.h"
+# include "../../libft/libft.h"
 
-void	error_alloc(void)
-{
-	write(2, "Fatal: error in memory allocation\n", 34);
-	exit(1);
-}
+typedef struct s_data	t_data;
 
-void	error_file(char *msg)
+typedef struct grab_line
 {
-	while (*msg)
-		write(2, &*msg++, 1);
-	exit(1);
-}
+	char		*buff;
+	char		*tmp;
+	char		*line;
+	t_data		*data;
+}	t_gnl;
+
+char	*grab_line(t_data *data, int fd);
+
+#endif

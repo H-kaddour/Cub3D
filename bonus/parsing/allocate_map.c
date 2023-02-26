@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:55:15 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:26:22 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:31:17 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 static int	check_if_line_exist(char *line)
 {

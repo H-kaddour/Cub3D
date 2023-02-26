@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 16:18:28 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:29:30 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:23:14 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,22 @@ void	check_clr_error(char *line)
 int	check_clr_range(char *nbr)
 {
 	int	n;
+	int	i;
 
-	if (ft_strlen(nbr) <= 3)
+	i = 0;
+	while (nbr[i])
 	{
-		n = ft_atoi(nbr);
-		if (n >= 0 && n <= 255)
-			return (0);
+		if (nbr[i] != '0')
+		{
+			if (ft_strlen(&nbr[i]) > 3)
+				return (1);
+			else
+				break ;
+		}
+		i++;
 	}
+	n = ft_atoi(nbr);
+	if (n >= 0 && n <= 255)
+		return (0);
 	return (1);
 }

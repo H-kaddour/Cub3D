@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:20:56 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:26:45 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:30:44 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 static void	check_file_exetention(char *file)
 {

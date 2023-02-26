@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 22:15:37 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/12/06 12:59:23 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:23:19 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void	read_line(t_gnl *t_line, int fd)
 		t_line->tmp = t_line->line;
 		if (!t_line->tmp)
 			t_line->tmp = allocation(t_line->data, 1, sizeof(char));
-		t_line->line = ft_strjoin(t_line->data, t_line->tmp, t_line->buff);
+		t_line->line = ft_strjoin(t_line->tmp, t_line->buff);
+		garbage_collector(t_line->data, t_line->line);
 	}
 }
 

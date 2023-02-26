@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 12:02:06 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/24 13:29:26 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:14:58 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	add_color_elem(t_data *data, char *line)
 	char	**sp;
 
 	i = 0;
-	sp = ft_split(data, line, ',');
+	sp = ft_split(line, ',');
+	split_collect_addr(data, sp);
 	check_clr_error(line);
 	while (sp[i])
 	{

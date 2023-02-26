@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:56:21 by hkaddour          #+#    #+#             */
-/*   Updated: 2023/02/25 12:14:05 by hkaddour         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:32:48 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "../../include/cub3d_bonus.h"
 
 void	mini_map_draw(t_data *data)
 {
